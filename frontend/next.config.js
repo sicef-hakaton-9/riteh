@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ["cdn.weatherapi.com", "www.shutterstock.com"] }
+  experimental: {
+    serverActions: true
+  },
+  images: { domains: ["cdn.weatherapi.com", "www.shutterstock.com"] },
+  reactStrictMode: false
 };
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withNextIntl = require("next-intl/plugin")(
