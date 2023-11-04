@@ -49,11 +49,9 @@ module.exports = {
           100: "#969BA5",
           200: "#55616D"
         },
-        orange: "#FF964B",
-        pink: "#ED5FBD",
-        primary: "#2190FF",
-        purple: "#8C7CFF",
-        violet: "#F16565",
+        primary: "#79B4A9",
+        secondary: "#EE7674",
+        text: "#424B54",
         white: {
           400: "#A3B3BC",
           500: "#A4B8D5",

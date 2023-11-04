@@ -15,14 +15,9 @@ import DataTableDemo from "@/components/dataTable/demo";
 import Graph from "@/components/lineGraph";
 import ImageUpload from "@/components/imageUpload";
 import { Textarea } from "@/components/ui/textarea";
-import { useSession } from "next-auth/react";
 
 export default function Index() {
   const { toast } = useToast();
-  const session = useSession();
-
-  console.log(session);
-
   return (
     <>
       <Navbar />

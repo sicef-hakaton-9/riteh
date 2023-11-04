@@ -7,6 +7,13 @@
   --warning-foreground: 48 96% 89%;
   --radius: 12px;
 }
+
+.tab {
+  box-shadow: 1px -17px 35px -8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px -17px 35px -8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px -17px 35px -8px rgba(0, 0, 0, 0.5);
+}
+
 @layer utilities {
   .heading1 {
     @apply text-[64px] leading-[67.2px] font-bold;
