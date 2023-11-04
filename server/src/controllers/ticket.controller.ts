@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3"
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { v4 as uuidv4 } from 'uuid';
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 
@@ -52,7 +53,7 @@ export const createTicket = async (req: Request, res: Response) => {
         const putOperationCommand = new PutCommand(putOperationInput)
         await dynamodb.send(putOperationCommand)
 
-        return res.status(201).json({ message: 'Ticket created successfully' });
+        return res.status(201).json({ message: 'Ticket created successfully', ticketId: id });
     }
     catch(error){
         console.log(`An error has occured during the ticket creation ${error}`);
@@ -69,15 +70,38 @@ export const getTicketById = async (req: Request, res: Response) => {
         id: { S: id } // The primary key (UUID in this case)
       }
     }));
-    const returnJson = transformDynamoDBRecord(data.Item)
   
     // Check if the data.Item is falsy or an empty object,
     // if so, return 404
-    if(!data.Item || Object.keys(data.Item).length === 0) { 
-      return res.status(404).json({ message: 'Ticket not found' }); 
+    if (!data.Item || Object.keys(data.Item).length === 0) {
+      return res.status(404).json({ message: 'Ticket not found' });
     }
-    return res.status(200).json({ 'ticket': returnJson });
+  
+    const returnJson = transformDynamoDBRecord(data.Item);
+  
+    // Pretpostavimo da 'imageKey' sadrži ključ slike na S3
+    const imageKey = `${returnJson.id}.jpeg`;
+  
+    try {
+      if (imageKey) {
+        const command = new GetObjectCommand({
+          Bucket: bucketName,
+          Key: imageKey,
+        });
+        
+        const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 }); // URL traje 1 sat
+        
+        // Dodajte signed URL u odgovor
+        returnJson.imageUrl = signedUrl;
+      }
+      
+      return res.status(200).json({ ticket: returnJson });
+    } catch (error) {
+      console.error('Error getting signed URL:', error);
+      return res.status(500).json({ message: 'Error getting signed URL', error });
+    }
 };
+  
 
 function transformDynamoDBRecord(dynamoDBRecord: any) {
     return Object.keys(dynamoDBRecord).reduce((result: any, key) => {
