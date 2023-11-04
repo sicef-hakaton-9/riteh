@@ -28,8 +28,6 @@ export const loginController = async (req: Request, res: Response) => {
       const command = new ScanCommand(input)
       const result = await dynamodb.send(command)
 
-      console.log(`these are the results ${result}`)
-
       if(!result.Items || result.Items.length == 0) { 
         return res.status(404).json({ message: 'User not found or password incorrect' }); 
       }
@@ -82,7 +80,7 @@ export const registerController = async (req: Request, res: Response) => {
         const user = { uuid, email, password: hashedPassword };
         
         const putOperationInput = {
-          TableName: 'users',
+          TableName: tableName,
           Item: user
         }
         const putOperationCommand = new PutCommand(putOperationInput)
