@@ -57,7 +57,7 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="sm:fixed hidden sm:block left-0 top-0 z-40 h-screen w-64 transition-transform"
+      className="sm:sticky hidden sm:block left-0 top-0 z-40 h-screen w:1/4 lg:w-1/6 transition-transform"
       aria-label="Sidebar"
     >
       <div className="flex h-full flex-col overflow-y-auto border-r border-slate-200 bg-white px-3 py-4 dark:border-slate-700 dark:bg-slate-900">
@@ -91,7 +91,6 @@ export default function Sidebar() {
               aria-roledescription="more menu"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
               className="h-5 w-5 text-black dark:text-white"
               stroke-linecap="round"
               stroke-linejoin="round"
