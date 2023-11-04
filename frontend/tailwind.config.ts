@@ -46,15 +46,10 @@ module.exports = {
           400: "#242C38",
           DEFAULT: "#000"
         },
-        grey: {
-          100: "#969BA5",
-          200: "#55616D"
-        },
-        orange: "#FF964B",
-        pink: "#ED5FBD",
-        primary: "#2190FF",
-        purple: "#8C7CFF",
-        violet: "#F16565",
+        grey: "424B54",
+        primary: "#79B4A9",
+        purple: "655560",
+        secondary: "#EE7674",
         white: {
           400: "#A3B3BC",
           500: "#A4B8D5",
