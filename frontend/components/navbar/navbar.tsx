@@ -59,9 +59,9 @@ const components: { title: string; href: string; description: string }[] = [
 const Navbar = () => {
   return (
     <>
-      <div className="justify-between items-center px-6 hidden sm:flex">
+      <div className="justify-between items-center px-6 flex sm:hidden mt-4 mb-4">
         <Image src="/images/logo.png" width={70} height={70} alt="logo" />
-        <NavigationMenu>
+        {/*  <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
@@ -120,9 +120,9 @@ const Navbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <LocaleSwitcher />
+        <LocaleSwitcher /> */}
+        <NavbarMobile />
       </div>
-      <NavbarMobile />
     </>
   );
 };

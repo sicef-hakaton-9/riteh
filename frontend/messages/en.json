@@ -15,5 +15,15 @@
     "email": "Email",
     "password": "Password",
     "submit": "Submit"
-  }
+  },
+  "sidebar": {
+    "home": "Home",
+    "news": "News",
+    "parking": "Parking",
+    "buses": "Buses",
+    "waste": "Waste",
+    "ticketing": "Ticketing",
+    "bills": "Pay bills"
+  },
+  "chooseLanguage": "Choose language"
 }

@@ -26,7 +26,7 @@
         "@typescript-eslint/promise-function-async": ["error", { "allowAny": true }]
       },
       "parserOptions": {
-        "project": ["./tsconfig.json"]
+        "project": ["../hackathon2023/riteh/frontend/tsconfig.json"]
       }
     }
   ],

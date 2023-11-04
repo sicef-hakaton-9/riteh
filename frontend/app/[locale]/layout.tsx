@@ -8,8 +8,9 @@ import { getTranslator } from "next-intl/server";
 import type { Metadata } from "next";
 import getPathname from "@/utils/getPathname";
 import removeTrailingSlash from "@/utils/removeTrailingSlash";
-import Footer from "@/components/footer";
 import clsx from "clsx";
+import Sidebar from "@/components/sidebar";
+import { Navbar } from "@/components/navbar/navbar";
 
 const locales = ["en", "hr", "sr"];
 
@@ -44,10 +45,11 @@ export default async function LocaleLayout({ children, params }: Props) {
           messages={messages}
           session={params.session}
         >
+          <Sidebar />
+          <Navbar />
           {children}
         </Provider>
       </body>
-      <Footer />
     </html>
   );
 }
