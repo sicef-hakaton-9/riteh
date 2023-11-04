@@ -10,7 +10,6 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
-import { Navbar } from "@/components/navbar/navbar";
 import DataTableDemo from "@/components/dataTable/demo";
 import Graph from "@/components/lineGraph";
 import ImageUpload from "@/components/imageUpload";
