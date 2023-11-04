@@ -12,5 +12,11 @@
     "googleProvider": {
       "title": "Prijavi se sa Guglom"
     }
+  },
+  "parking": {
+    "capacity": "Kapacitet",
+    "slots": "Slobodna mesta",
+    "price": "Cena",
+    "goto": "Odvedi me"
   }
 }
