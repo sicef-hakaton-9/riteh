@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
       session?: Session;
     }) {
       if ((user.token as unknown as TokenSet).token_type === "Bearer") {
-        token.accessToken = user.token.access_token;
+        token.accessToken = (user.token as unknown as TokenSet).access_token || "";
 
         return token;
       }
