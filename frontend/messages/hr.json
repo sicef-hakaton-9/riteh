@@ -11,5 +11,11 @@
     "ticketing": "Upiti",
     "bills": "Plati račune"
   },
-  "chooseLanguage": "Izaberi jezik"
+  "chooseLanguage": "Izaberi jezik",
+  "parking": {
+    "capacity": "Kapacitet",
+    "slots": "Slobodna mjesta",
+    "price": "Cijena",
+    "goto": "Odvedi me"
+  }
 }
