@@ -14,7 +14,8 @@ module.exports = {
     extend: {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out"
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "pop-in": "popInBounce 1s ease-out forwards"
       },
       backgroundImage: {
         "auth-dark": "url('/images/auth-background-dark.svg')",

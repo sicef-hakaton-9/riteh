@@ -2,11 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 :root {
   --warning: 38 92% 50%;
   --warning-foreground: 48 96% 89%;
   --radius: 12px;
 }
+
+@keyframes popInBounce {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-popInBounce {
+  animation: popInBounce 1s ease-out forwards;
+}
+
 @layer utilities {
   .heading1 {
     @apply text-[64px] leading-[67.2px] font-bold;
