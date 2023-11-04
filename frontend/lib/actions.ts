@@ -1,7 +1,7 @@
 /* eslint-disable */
 "use server";
 
-export async function getparkingswithlocation() {
+export async function getParkingsWithLocation() {
   const parkings: Parking[] = [];
   try {
     const res = await fetch(

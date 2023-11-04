@@ -6,7 +6,7 @@ import mapbox from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useTranslations } from "next-intl";
 
-import { getparkingswithlocation } from "@/lib/actions";
+import { getParkingsWithLocation } from "@/lib/actions";
 import ParkingMarker from "@/components/map/marker";
 
 export default function ParkingPage() {
@@ -17,8 +17,7 @@ export default function ParkingPage() {
   mapbox.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY || "";
 
   const getParking = async () => {
-    const data = await getparkingswithlocation();
-    console.log(data);
+    const data = await getParkingsWithLocation();
     setParkings(data);
   };
 
