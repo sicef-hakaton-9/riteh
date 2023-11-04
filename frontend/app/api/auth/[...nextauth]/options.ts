@@ -1,6 +1,13 @@
-import type { DefaultSession, NextAuthOptions, Session, User } from "next-auth";
+import type {
+  DefaultSession,
+  NextAuthOptions,
+  Session,
+  TokenSet,
+  User
+} from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 interface MyUser {
   email: string;
@@ -35,6 +42,11 @@ export const authOptions: NextAuthOptions = {
       user: User;
       session?: Session;
     }) {
+      if ((user.token as unknown as TokenSet).token_type === "Bearer") {
+        token.accessToken = user.token.access_token;
+
+        return token;
+      }
       if (user) {
         const jwt = user.token;
         const [, payload] = jwt.split(".");
@@ -43,11 +55,19 @@ export const authOptions: NextAuthOptions = {
         token.accessToken = user.token;
         token.user = { email: decodedPayload.email };
       }
+
       return token;
+    },
+    async redirect({ baseUrl, url }) {
+      const redirectUrl = url.startsWith("/")
+        ? new URL(url, baseUrl).toString()
+        : url;
+      return redirectUrl;
     },
     async session({ session, token }: { session: Session; token: JWT }) {
       session.accessToken = token.accessToken;
       session.user = token.user;
+
       return session;
     }
   },
@@ -56,6 +76,17 @@ export const authOptions: NextAuthOptions = {
     signIn: "/sign-in"
   },
   providers: [
+    GoogleProvider({
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET || "",
+      async profile(profile, token) {
+        return {
+          ...profile,
+          id: profile.sub,
+          token
+        };
+      }
+    }),
     CredentialsProvider({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       async authorize(data: any) {

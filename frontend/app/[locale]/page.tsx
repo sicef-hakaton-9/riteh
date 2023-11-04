@@ -15,21 +15,25 @@ import DataTableDemo from "@/components/dataTable/demo";
 import Graph from "@/components/lineGraph";
 import ImageUpload from "@/components/imageUpload";
 import { Textarea } from "@/components/ui/textarea";
+import { useSession } from "next-auth/react";
 
 export default function Index() {
   const { toast } = useToast();
+  const session = useSession();
+
+  console.log(session);
 
   return (
     <>
       <div className="flex-wrap flex gap-[8px] justify-center">
-        {/* <Popover>
-          <PopoverTrigger>
+        <Popover>
+          <PopoverTrigger asChild>
             <Button>Open popover</Button>
           </PopoverTrigger>
           <PopoverContent>Place content for the popover here.</PopoverContent>
-        </Popover> */}
-        {/* <Dialog>
-          <DialogTrigger>
+        </Popover>
+        <Dialog>
+          <DialogTrigger asChild>
             <Button>Open dialog</Button>
           </DialogTrigger>
           <DialogContent>
@@ -41,8 +45,8 @@ export default function Index() {
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
-        </Dialog> */}
-        {/* <Button
+        </Dialog>
+        <Button
           onClick={() => {
             toast({
               description: "Friday, February 10, 2023 at 5:57 PM",
@@ -51,9 +55,9 @@ export default function Index() {
           }}
         >
           Show Toast
-        </Button> */}
-        {/* <Dialog>
-          <DialogTrigger>
+        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
             <Button>Upload image</Button>
           </DialogTrigger>
           <DialogContent>
@@ -65,9 +69,9 @@ export default function Index() {
             <Textarea />
             <Button className="w-full">Send</Button>
           </DialogContent>
-        </Dialog> */}
-        {/* <DataTableDemo /> */}
-        {/* <div className="w-full p-8">
+        </Dialog>
+        <DataTableDemo />
+        <div className="w-full p-8">
           <Graph
             xKey={"person"}
             yKey={"money"}
@@ -87,7 +91,7 @@ export default function Index() {
             ]}
             height={300}
           />
-        </div> */}
+        </div>
       </div>
     </>
   );

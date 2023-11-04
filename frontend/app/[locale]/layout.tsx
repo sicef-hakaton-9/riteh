@@ -49,6 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Navbar />
           {children}
         </Provider>
+        <Footer />
       </body>
     </html>
   );

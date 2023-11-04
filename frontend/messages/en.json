@@ -15,8 +15,11 @@
     "email": "Email",
     "password": "Password",
     "submit": "Submit"
+    "googleProvider": {
+      "title": "Log in with Google"
+    }
   },
-  "sidebar": {
+"sidebar": {
     "home": "Home",
     "news": "News",
     "parking": "Parking",
