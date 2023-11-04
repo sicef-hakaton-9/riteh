@@ -89,7 +89,7 @@ export const getTicketById = async (req: Request, res: Response) => {
           Key: imageKey,
         });
         
-        const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 }); // URL traje 1 sat
+        const signedUrl = await getSignedUrl(s3, command, { expiresIn: 3600 }); // URL traje 1 sat
         
         // Dodajte signed URL u odgovor
         returnJson.imageUrl = signedUrl;
