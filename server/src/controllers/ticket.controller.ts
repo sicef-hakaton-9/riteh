@@ -1,16 +1,15 @@
-import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
 import { v4 as uuidv4 } from 'uuid';
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
-import { table } from 'console';
-
-dotenv.config()
 
 const dynamodb = new DynamoDBClient({ credentials: fromNodeProviderChain({}) })
+const s3 = new S3Client({ credentials: fromNodeProviderChain({ clientConfig: 'eu-central-1' }) })
+
 const tableName = 'tickets';
+const bucketName = 'sicef-hackathon-tickets'
 
 export const getAllTickets = async (req: Request, res: Response) => {
     const data = await dynamodb.send(new ScanCommand({
@@ -24,11 +23,27 @@ export const getAllTickets = async (req: Request, res: Response) => {
 
 export const createTicket = async (req: Request, res: Response) => {
     try {
-        const { x, y, title, description, category } = req.body;
-        if(!x || !y || !title || !description || !category){
+        const { x, y, title, description, category, image } = req.body;
+        if(!x || !y || !title || !description || !category || !image){
             return res.status(400).json({ message: 'Something is missing from your request, check your request and please try again' });
-        }  
+        }
         const id = uuidv4();
+
+        const buffer = Buffer.from(image, 'base64');
+        const params = {
+            Bucket: bucketName,
+            Key: `${id}.jpeg`,
+            Body: buffer,
+            ContentType: 'image/jpeg'
+        };
+
+        try {
+            await s3.send(new PutObjectCommand(params));
+        } catch (err) {
+            console.log("An error occured while uploading the ticket image", err);
+            return res.status(500).json({ message: 'Error occured while uploading ticket image' });
+        }
+
         const ticket = { id, x, y, title, description, category };
         const putOperationInput = {
             TableName: tableName,
