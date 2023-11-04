@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 
 import authRouter from "./routes/auth.routes";
+import ticketRouter from "./routes/ticket.routes"
 import { createServer } from "http";
 
 const swaggerOptions = {
@@ -46,6 +47,7 @@ app.get("/test", (req: Request, res: Response) =>
 );
 //* Use Routes
 app.use("/api/auth", authRouter);
+app.use("/api/ticket", ticketRouter);
 
 app.get('/health', (req: Request, res: Response) => res.status(200).json({ status: 'Healthy.' }));
 
