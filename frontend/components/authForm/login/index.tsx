@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -42,6 +42,13 @@ export function LoginForm() {
     });
   }
 
+  async function handeGoogleSignIn() {
+    await signIn("google", {
+      callbackUrl: "http://localhost:3000/",
+      redirect: false
+    });
+  }
+
   const t = useTranslations("auth");
 
   return (
@@ -76,6 +83,10 @@ export function LoginForm() {
         />
         <Button className="w-full" type="submit">
           {t("submit")}
+        </Button>
+
+        <Button type="button" className="w-full" onClick={handeGoogleSignIn}>
+          {t("googleProvider.title")}
         </Button>
       </form>
     </Form>
