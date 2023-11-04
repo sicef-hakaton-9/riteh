@@ -1,0 +1,10 @@
+numpy==1.24.3
+tensorflow
+keras
+matplotlib
+tensorflow-decision-forests
+pandas
+scikit-learn
+scikit-optimize
+xgboost
+bayesian-optimization

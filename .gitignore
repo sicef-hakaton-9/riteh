@@ -1,2 +1,3 @@
 **/._DS_Store
-**/.aws_sam
+**/.aws_sam/
+**/venv/
