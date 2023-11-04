@@ -1,0 +1,15 @@
+{
+  "index": {
+    "title": "Pozdrav!"
+  },
+  "sidebar": {
+    "home": "Početna",
+    "news": "Novosti",
+    "parking": "Parking",
+    "buses": "Busevi",
+    "waste": "Otpad",
+    "ticketing": "Upiti",
+    "bills": "Plati račune"
+  },
+  "chooseLanguage": "Izaberi jezik"
+}

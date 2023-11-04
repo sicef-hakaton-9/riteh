@@ -1,0 +1,16 @@
+{
+  "index": {
+    "title": "Pozdrav!"
+  },
+  "auth": {
+    "login": "Prijavi se",
+    "logout": "Odjavi se",
+    "register": "Napravi nalog",
+    "email": "Email",
+    "password": "Šifra",
+    "submit": "Predaj",
+    "googleProvider": {
+      "title": "Prijavi se sa Guglom"
+    }
+  }
+}
