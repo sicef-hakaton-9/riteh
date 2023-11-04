@@ -13,11 +13,22 @@
     "logout": "Logout",
     "register": "Register",
     "email": "Email",
+    "name": "Name",
     "password": "Password",
+    "city": "City",
+    "address": "Address",
+    "country": "Country",
     "submit": "Submit",
     "googleProvider": {
       "title": "Log in with Google"
-    }
+    },
+    "error": "Oops, something went wrong!",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "areYouABusiness": "Are you a business?",
+    "registerAsBusiness": "Register as a business",
+    "notABusiness": "Not a business?",
+    "registerAsUser": "Register as a user"
   },
   "sidebar": {
     "home": "Home",
@@ -25,7 +36,7 @@
     "parking": "Parking",
     "buses": "Buses",
     "waste": "Waste",
-    "ticketing": "Ticketing",
+    "ticketing": "Submit a ticket",
     "bills": "Pay bills"
   },
   "chooseLanguage": "Choose language",

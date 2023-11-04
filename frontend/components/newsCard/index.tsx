@@ -4,7 +4,7 @@ import { Card } from "../ui/card";
 export default function NewsCard() {
   return (
     <>
-      <Card className="w-[400px] h-[300px] relative">
+      <Card className="w-full h-full max-w-[400px] max-h-[300px] relative">
         <div className="w-full h-[150px] relative">
           <Image
             src={

@@ -9,7 +9,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       <div className="w-full flex">
         <ChatIcon />
         <Sidebar />
-        <div className="w:3/4 lg:w-5/6">{children}</div>
+        <div className="max-w-[100%] w:3/4 lg:w-5/6 p-6">{children}</div>
       </div>
     </>
   );
