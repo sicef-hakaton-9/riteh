@@ -25,7 +25,6 @@ export default function Index() {
 
   return (
     <>
-      <Navbar />
       <div className="flex-wrap flex gap-[8px] justify-center">
         <Popover>
           <PopoverTrigger asChild>

@@ -72,15 +72,15 @@ export default function LocaleSwitcher() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="sm:hidden grid gap-4 py-4">
+      <div className="sm:hidden grid gap-4 py-4 ml-3">
         {locales.map((locale: string) => {
           return (
             <Link href={`/${locale}`} locale={locale} key={locale}>
               <div className="flex pr-7 items-center">
                 <Image
                   src={getFlag(locale)}
-                  width={40}
-                  height={40}
+                  width={20}
+                  height={20}
                   alt="flag"
                   className="mr-4"
                 />

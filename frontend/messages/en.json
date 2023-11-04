@@ -14,9 +14,19 @@
     "register": "Register",
     "email": "Email",
     "password": "Password",
-    "submit": "Submit",
+    "submit": "Submit"
     "googleProvider": {
       "title": "Log in with Google"
     }
-  }
+  },
+"sidebar": {
+    "home": "Home",
+    "news": "News",
+    "parking": "Parking",
+    "buses": "Buses",
+    "waste": "Waste",
+    "ticketing": "Ticketing",
+    "bills": "Pay bills"
+  },
+  "chooseLanguage": "Choose language"
 }
