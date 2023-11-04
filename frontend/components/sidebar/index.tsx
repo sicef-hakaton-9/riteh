@@ -12,43 +12,44 @@ import {
   Trash2
 } from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
+import Endpoints from "@/constants/enums/Endpoints";
 
 export default function Sidebar() {
   const t = useTranslations();
 
   const items = [
     {
-      href: "/",
+      href: Endpoints.HOME,
       icon: <Home className="h-5 w-5" />,
       label: t("sidebar.home")
     },
     {
-      href: "/news",
+      href: Endpoints.NEWS,
       icon: <Newspaper className="h-5 w-5" />,
       label: t("sidebar.news")
     },
     {
-      href: "/parking",
+      href: Endpoints.PARKING,
       icon: <ParkingSquare className="h-5 w-5" />,
       label: t("sidebar.parking")
     },
     {
-      href: "/buses",
+      href: Endpoints.BUSES,
       icon: <Bus className="h-5 w-5" />,
       label: t("sidebar.buses")
     },
     {
-      href: "/waste",
+      href: Endpoints.WASTE,
       icon: <Trash2 className="h-5 w-5" />,
       label: t("sidebar.waste")
     },
     {
-      href: "/ticketing",
+      href: Endpoints.TICKETING,
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
     },
     {
-      href: "/bills",
+      href: Endpoints.BILLS,
       icon: <Receipt className="h-5 w-5" />,
       label: t("sidebar.bills")
     }
