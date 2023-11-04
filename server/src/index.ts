@@ -7,7 +7,9 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 
 import authRouter from "./routes/auth.routes";
+import ticketRouter from "./routes/ticket.routes"
 import { createServer } from "http";
+import { Server } from "socket.io";
 
 const swaggerOptions = {
     definition: {
@@ -37,6 +39,35 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
+const io = new Server(server, {
+  cors: {
+    origin: "*", // Replace with your frontend URL
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
+  },
+});
+
+io
+  .of("/goat-chat")
+  .on("connection", (socket) => {
+  console.log("a user connected", socket.id);
+
+  socket.on("join_room", (roomId) => {
+    socket.join(roomId);
+    console.log(`user with id-${socket.id} joined room - ${roomId}`);
+  });
+
+  socket.on("send_msg", (data) => {
+    console.log(`User ${socket.id} has sent a message "${data}"`);
+    socket.to(data.roomId).emit("receive_msg", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected:", socket.id);
+  });
+});
+
 //* Root Route
 app.get("/", (req: Request, res: Response) =>
   res.status(200).json({ status: "Backend running." })
@@ -46,6 +77,7 @@ app.get("/test", (req: Request, res: Response) =>
 );
 //* Use Routes
 app.use("/api/auth", authRouter);
+app.use("/api/ticket", ticketRouter);
 
 app.get('/health', (req: Request, res: Response) => res.status(200).json({ status: 'Healthy.' }));
 

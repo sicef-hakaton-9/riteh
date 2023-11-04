@@ -8,7 +8,7 @@ import { getTranslator } from "next-intl/server";
 import type { Metadata } from "next";
 import getPathname from "@/utils/getPathname";
 import removeTrailingSlash from "@/utils/removeTrailingSlash";
-import clsx from "clsx";
+import Footer from "@/components/footer";
 
 const locales = ["en", "hr", "sr"];
 
@@ -37,14 +37,17 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={params.locale}>
-      <body className={clsx(poppins.className, "min-h-screen")}>
-        <Provider
-          locale={params.locale}
-          messages={messages}
-          session={params.session}
-        >
-          {children}
-        </Provider>
+      <body className={poppins.className}>
+        <main className="min-h-screen">
+          <Provider
+            locale={params.locale}
+            messages={messages}
+            session={params.session}
+          >
+            {children}
+          </Provider>
+        </main>
+        <Footer />
       </body>
     </html>
   );

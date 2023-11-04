@@ -14,7 +14,8 @@ module.exports = {
     extend: {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out"
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "pop-in": "popInBounce 1s ease-out forwards"
       },
       backgroundImage: {
         "auth-dark": "url('/images/auth-background-dark.svg')",
@@ -45,10 +46,13 @@ module.exports = {
           400: "#242C38",
           DEFAULT: "#000"
         },
-        grey: "424B54",
+        grey: {
+          100: "#969BA5",
+          200: "#55616D"
+        },
         primary: "#79B4A9",
-        purple: "655560",
         secondary: "#EE7674",
+        text: "#424B54",
         white: {
           400: "#A3B3BC",
           500: "#A4B8D5",

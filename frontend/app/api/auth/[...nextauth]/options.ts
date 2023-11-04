@@ -1,16 +1,11 @@
-import type {
-  DefaultSession,
-  NextAuthOptions,
-  Session,
-  TokenSet,
-  User
-} from "next-auth";
+import type { DefaultSession, NextAuthOptions, Session, User } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 interface MyUser {
   email: string;
+  name: string;
   // role: string;
 }
 declare module "next-auth" {
@@ -42,18 +37,13 @@ export const authOptions: NextAuthOptions = {
       user: User;
       session?: Session;
     }) {
-      if ((user.token as unknown as TokenSet).token_type === "Bearer") {
-        token.accessToken = (user.token as unknown as TokenSet).access_token || "";
-
-        return token;
-      }
       if (user) {
         const jwt = user.token;
         const [, payload] = jwt.split(".");
 
         const decodedPayload = JSON.parse(atob(payload));
         token.accessToken = user.token;
-        token.user = { email: decodedPayload.email };
+        token.user = { email: decodedPayload.email, name: decodedPayload.name };
       }
 
       return token;
@@ -83,7 +73,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...profile,
           id: profile.sub,
-          token
+          token: token.id_token
         };
       }
     }),
