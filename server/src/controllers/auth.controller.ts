@@ -100,9 +100,9 @@ export const loginController = async (req: Request, res: Response) => {
 
 export const registerController = async (req: Request, res: Response) => {
     try {
-        const { email, password } = req.body;
+        const { name, email, password } = req.body;
   
-        if (!email || !password) {
+        if (!email || !password || !name) {
           return res.status(400).json({ message: 'Email, password and role are required' });
         }
   
@@ -124,7 +124,7 @@ export const registerController = async (req: Request, res: Response) => {
         // Hash password for security reasons
         const saltRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const user = { uuid, email, password: hashedPassword, role: 'user' };
+        const user = { uuid, email, password: hashedPassword, role: 'user', name };
         
         const putOperationInput = {
           TableName: tableName,
