@@ -1,0 +1,65 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:css-modules/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-no-inline-styles",
+    "css-modules",
+    "perfectionist",
+    "import"
+  ],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/array-type": ["error", { "default": "array" }],
+        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+        "@typescript-eslint/promise-function-async": ["error", { "allowAny": true }]
+      },
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  ],
+  "rules": {
+    "react/display-name": "off",
+    "no-console": "warn",
+    "semi": "off",
+    "no-warning-comments": [
+      "warn",
+      { "terms": ["TODO", "FIXME"], "location": "anywhere" }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-inline-styles/no-inline-styles": "warn",
+    "react/no-array-index-key": "warn",
+    "react/jsx-no-leaked-render": "error",
+    "react/no-danger-with-children": "error",
+    // "css-modules/no-unused-class": ["warn", { "camelCase": true }],
+    // "css-modules/no-undef-class": ["error", { "camelCase": true }]
+    "css-modules/no-unused-class": ["off", { "camelCase": true }],
+    "css-modules/no-undef-class": ["off", { "camelCase": true }],
+    "@typescript-eslint/consistent-type-imports": "error",
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "type": "natural",
+        "order": "asc"
+      }
+    ],
+    "import/no-unused-modules": "error"
+  }
+}

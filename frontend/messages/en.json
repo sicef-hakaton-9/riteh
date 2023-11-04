@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "main": {
+      "title": "Hello world!",
+      "description": "Hello world!"
+    }
+  },
+  "index": {
+    "title": "Hello world!"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit"
+  }
+}
