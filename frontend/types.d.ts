@@ -7,4 +7,5 @@ interface Parking {
     lang: number;
     lat: number;
   };
+  price: string;
 }

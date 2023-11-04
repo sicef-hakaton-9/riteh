@@ -39,5 +39,11 @@
     "ticketing": "Submit a ticket",
     "bills": "Pay bills"
   },
-  "chooseLanguage": "Choose language"
+  "chooseLanguage": "Choose language",
+  "parking": {
+    "capacity": "Capacity",
+    "slots": "Free slots",
+    "price": "Price",
+    "goto": "Take me there"
+  }
 }

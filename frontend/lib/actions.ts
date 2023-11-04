@@ -1,7 +1,7 @@
-// eslint-disable
+/* eslint-disable */
 "use server";
 
-export async function getparkingswithlocation() {
+export async function getParkingsWithLocation() {
   const parkings: Parking[] = [];
   try {
     const res = await fetch(
@@ -23,7 +23,8 @@ export async function getparkingswithlocation() {
             lang: parking.parking_data.lokacija.lng,
             lat: parking.parking_data.lokacija.lat
           },
-          name: parking.parking_name
+          name: parking.parking_name,
+          price: `${parking.parking_data.cijena[0].cijena}€`
         });
       }
     });
