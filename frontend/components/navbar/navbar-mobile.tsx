@@ -8,15 +8,22 @@ import { useTranslations } from "next-intl";
 import {
   Bus,
   Home,
+  LogOut,
   Newspaper,
   ParkingSquare,
   Receipt,
   Tag,
   Trash2
 } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+import Endpoints from "@/constants/enums/Endpoints";
 
 export function NavbarMobile() {
   const t = useTranslations();
+  const session = useSession();
+  const router = useRouter();
 
   const items = [
     {
@@ -62,7 +69,7 @@ export function NavbarMobile() {
         <SheetTrigger asChild>
           <HamburgerMenuIcon className="h-6 w-6 cursor-pointer" />
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="flex flex-col">
           <div className="grid gap-4 py-4">
             {items.map((item, index) => (
               <Link
@@ -80,6 +87,35 @@ export function NavbarMobile() {
               {t("chooseLanguage")}
             </span>
             <LocaleSwitcher />
+          </div>
+          <div className="mt-auto flex gap-2 justify-end">
+            {session.data ? (
+              <>
+                {session.data?.user.email}
+                <LogOut
+                  onClick={() => {
+                    signOut();
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Button
+                  onClick={() => {
+                    router.push(Endpoints.LOGIN);
+                  }}
+                >
+                  {t("auth.login")}
+                </Button>
+                <Button
+                  onClick={() => {
+                    router.push(Endpoints.REGISTER);
+                  }}
+                >
+                  {t("auth.register")}
+                </Button>
+              </>
+            )}
           </div>
         </SheetContent>
       </Sheet>
