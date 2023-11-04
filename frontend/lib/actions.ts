@@ -12,6 +12,7 @@ export async function getparkingswithlocation() {
     );
     const body = await res.json();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body.map((parking: any) => {
       if (parking.parking_data.lokacija) {
         parkings.push({

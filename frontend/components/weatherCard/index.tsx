@@ -30,7 +30,7 @@ export default function WeatherCard({
 
   return (
     <>
-      <Card className="w-[400px] h-[220px]">
+      <Card className="w-full h-full max-w-[400px] max-h-[220px]">
         <div className="flex items-center p-2 gap-2">
           <div>
             <Player

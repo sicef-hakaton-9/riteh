@@ -7,12 +7,13 @@ import {
   Home,
   Newspaper,
   ParkingSquare,
-  Receipt,
+  // Receipt,
   Tag,
   Trash2
 } from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
 import Endpoints from "@/constants/enums/Endpoints";
+import { Separator } from "../ui/separator";
 
 export default function Sidebar() {
   const t = useTranslations();
@@ -47,12 +48,12 @@ export default function Sidebar() {
       href: Endpoints.TICKETING,
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
-    },
-    {
-      href: Endpoints.BILLS,
-      icon: <Receipt className="h-5 w-5" />,
-      label: t("sidebar.bills")
     }
+    // {
+    //   href: Endpoints.BILLS,
+    //   icon: <Receipt className="h-5 w-5" />,
+    //   label: t("sidebar.bills")
+    // }
   ];
 
   return (
@@ -77,9 +78,10 @@ export default function Sidebar() {
               </Link>
             </li>
           ))}
+          <Separator />
           <LocaleSwitcher />
         </ul>
-        <div className="mt-auto flex">
+        <div className="mt-auto flex ">
           <div className="flex w-full justify-between">
             <span className="text-sm font-medium text-black dark:text-white">
               email@example.com

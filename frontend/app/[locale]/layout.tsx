@@ -8,7 +8,6 @@ import { getTranslator } from "next-intl/server";
 import type { Metadata } from "next";
 import getPathname from "@/utils/getPathname";
 import removeTrailingSlash from "@/utils/removeTrailingSlash";
-import Footer from "@/components/footer";
 
 const locales = ["en", "hr", "sr"];
 
@@ -47,7 +46,6 @@ export default async function LocaleLayout({ children, params }: Props) {
             {children}
           </Provider>
         </main>
-        <Footer />
       </body>
     </html>
   );

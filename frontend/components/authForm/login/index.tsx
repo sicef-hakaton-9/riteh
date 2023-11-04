@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
+import Endpoints from "@/constants/enums/Endpoints";
+import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -52,43 +55,61 @@ export function LoginForm() {
   const t = useTranslations("auth");
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <h1 className="heading3">{t("login")}</h1>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t("email")}</FormLabel>
-              <FormControl>
-                <Input placeholder={t("email")} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t("password")}</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder={t("password")} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button className="w-full" type="submit">
-          {t("submit")}
-        </Button>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <h1 className="heading3">{t("login")}</h1>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("email")}</FormLabel>
+                <FormControl>
+                  <Input placeholder={t("email")} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("password")}</FormLabel>
+                <FormControl>
+                  <Input type="password" placeholder={t("password")} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button className="w-full" type="submit">
+            {t("submit")}
+          </Button>
 
-        <Button type="button" className="w-full" onClick={handeGoogleSignIn}>
-          {t("googleProvider.title")}
-        </Button>
-      </form>
-    </Form>
+          <Separator className="!mt-4 !mb-4" />
+
+          <Button type="button" className="w-full !mt-0" onClick={handeGoogleSignIn}>
+            <Image
+              src="/images/google-logo.svg"
+              width={20}
+              height={20}
+              alt="google logo"
+              className="pr-2"
+            />
+            {t("googleProvider.title")}
+          </Button>
+        </form>
+      </Form>
+      <p className="mt-4 text-xs">
+        {t("dontHaveAccount")}
+        <a href={Endpoints.REGISTER} className="font-bold">
+          {" "}
+          {t("register")}
+        </a>
+      </p>
+    </>
   );
 }
