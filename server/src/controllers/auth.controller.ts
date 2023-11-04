@@ -6,6 +6,7 @@ import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
+import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
 import { OAuth2Client } from 'google-auth-library';
 
 dotenv.config()
@@ -15,6 +16,8 @@ const tableName = 'users';
 
 const google_client_id = process.env.GOOGLE_CLIENT_ID
 const client = new OAuth2Client(google_client_id);
+
+const secretsManager = new SecretsManagerClient({ credentials: fromNodeProviderChain({}) });
 
 export const loginController = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -41,7 +44,7 @@ export const loginController = async (req: Request, res: Response) => {
         const receivedRoleFromDB = result?.Items[0]?.role
         const jwtToken = jwt.sign(
           { email, role: receivedRoleFromDB },
-          process.env.JWT_SECRET as string,
+          fetchSecret('JWT_Secret') as any,
           { expiresIn: '30h' }
         );
         return res.status(200).json({ message: 'Login successful, welcome!', token: jwtToken });
@@ -111,7 +114,7 @@ export const verifyGoogleOauth2 = async (req: Request, res: Response) => {
   }
   const jwtToken = jwt.sign(
     { email },
-    process.env.JWT_SECRET as string,
+    fetchSecret('JWT_Secret') as any,
     { expiresIn: '30h' }
   );
 
@@ -132,3 +135,12 @@ const verifyToken = async (token: any) => {
     return false;
   }
 };
+
+const fetchSecret = async (secretName: any) => {
+  const response  = await secretsManager.send(
+    new GetSecretValueCommand({
+      SecretId: secretName,
+    })
+  )
+  return response.SecretString;
+}
