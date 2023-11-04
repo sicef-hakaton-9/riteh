@@ -1,6 +1,5 @@
 import express from 'express';
 import { loginController, registerController } from '../controllers/auth.controller';
-import checkIfUserCanAccess from '../middleware/checkIfUserCanAccess'
 const router = express.Router();
 
 /**
