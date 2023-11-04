@@ -1,5 +1,5 @@
 import express from 'express';
-import { loginController, registerController, verifyGoogleOauth2 } from '../controllers/auth.controller';
+import { loginController, registerController, verifyGoogleOauth2, registerBusinessController } from '../controllers/auth.controller';
 const router = express.Router();
 
 /**
@@ -71,6 +71,7 @@ router.post('/login', loginController);
  *         description: Internal server error.
  */
 router.post('/register', registerController);
+router.post('/register-business', registerBusinessController);
 
 router.post('/google-jwt', verifyGoogleOauth2);
 
