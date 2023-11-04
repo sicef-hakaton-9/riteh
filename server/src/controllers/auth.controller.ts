@@ -16,6 +16,49 @@ const tableName = 'users';
 const google_client_id = process.env.GOOGLE_CLIENT_ID
 const client = new OAuth2Client(google_client_id);
 
+export const registerBusinessController = async (req: Request, res: Response) => {
+  try {
+      const { email, password, businessName, state, city, address } = req.body;
+
+      if (!email || !password) {
+        return res.status(400).json({ message: 'Email, password and role are required' });
+      }
+
+      // Check if user already exists
+      const input = {
+        TableName: tableName,
+        FilterExpression: 'email = :email',
+        ExpressionAttributeValues: { ':email': email }
+      }
+      const scancommand = new ScanCommand(input)
+      const existingUser = await dynamodb.send(scancommand)
+
+      if (existingUser.Items && existingUser.Items.length > 0) {
+        return res.status(400).json({ message: 'User already exists' });
+      }
+
+      // Create new user with unique id
+      const uuid = uuidv4();
+      // Hash password for security reasons
+      const saltRounds = 10
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      const user = { uuid, email, password: hashedPassword, businessName, state, city, address, role: 'business' };
+      
+      const putOperationInput = {
+        TableName: tableName,
+        Item: user
+      }
+      const putOperationCommand = new PutCommand(putOperationInput)
+      await dynamodb.send(putOperationCommand)
+  
+      // Return success response
+      return res.status(201).json({ message: 'Business account created successfully' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Error while creating business user' });
+    }
+}
+
 export const loginController = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
@@ -81,7 +124,7 @@ export const registerController = async (req: Request, res: Response) => {
         // Hash password for security reasons
         const saltRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const user = { uuid, email, password: hashedPassword };
+        const user = { uuid, email, password: hashedPassword, role: 'user' };
         
         const putOperationInput = {
           TableName: tableName,
