@@ -17,7 +17,8 @@
 }
 
 @keyframes popInBounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
     opacity: 0;
   }
