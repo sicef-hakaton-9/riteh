@@ -38,7 +38,8 @@
     "waste": "Waste",
     "ticketing": "Submit a ticket",
     "bills": "Pay bills",
-    "traffic": "Traffic"
+    "traffic": "Traffic",
+    "adminTickets": "Admin Tickets"
   },
   "chooseLanguage": "Choose language",
   "parking": {

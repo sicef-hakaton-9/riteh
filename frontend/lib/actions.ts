@@ -3,6 +3,54 @@
 
 import { parseMarker } from "./utils";
 
+export async function getWindCalc() {
+  const days = [
+    "Nov 04",
+    "Nov 03",
+    "Nov 02",
+    "Nov 01",
+    "Oct 31",
+    "Oct 30",
+    "Oct 29",
+    "Oct 28",
+    "Oct 27",
+    "Oct 26"
+  ];
+
+  try {
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_BACKEND_URL + `/api/windturbine/get-all-windturbines`,
+      {
+        method: "GET"
+      }
+    );
+    const body = await res.json();
+    body.allWindturbines.map((score: any, index: number) => {
+      body.allWindturbines[index] = {
+        ...score,
+        energyGenerated: score.energyGenerated / 1000,
+        day: days[index]
+      };
+    });
+
+    return body.allWindturbines;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
+export async function getTicketMapMarker(id: string) {
+  return (
+    await fetch(
+      process.env.NEXT_PUBLIC_BACKEND_URL + `/api/ticket/get-ticket-by-id/${id}`,
+      {
+        method: "GET"
+      }
+    )
+  ).json();
+}
+
 export async function getRoadworkReason(id: string) {
   try {
     const res = await fetch(`https://m.hak.hr/poi.asp?t=8987&id=${id}`);
@@ -69,7 +117,7 @@ export async function getBusLocation() {
     );
 
     const resStops = await fetch(
-      "http://e-usluge2.rijeka.hr/OpenData/ATvoznired.json",
+      "http://e-usluge2.rijeka.hr/OpenData/ATvoznired-nedjelja.json",
       {
         headers: { "content-type": "application/json" }
       }
@@ -80,10 +128,7 @@ export async function getBusLocation() {
 
     body.map((bus: any) => {
       for (let i = 0; i < stops.length; i++) {
-        if (
-          stops[i].PolazakId === bus.PolazakId.toString() &&
-          stops[i].StanicaId === bus.StanicaId
-        ) {
+        if (stops[i].StanicaId === bus.StanicaId) {
           busses.push({
             number: stops[i].BrojLinije,
             location: {
