@@ -58,5 +58,15 @@ interface CheckoutData {
   tax_rate: string | null;
 }
 
+interface Ticket {
+  title: string;
+  description: string;
+  category: "traffic" | "trash";
+  imageUrl: string;
+  id: string;
+  x: number;
+  y: number;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare let Paddle: any;

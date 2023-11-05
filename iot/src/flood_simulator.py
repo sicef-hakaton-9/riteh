@@ -12,6 +12,9 @@ table = dynamodb.Table('flood_sensors')
 
 def lambda_handler(event, context):
     random_water_level_value = random.randint(1, 100)
+    danger = False
+    if random_water_level_value > 70:
+        danger = True
 
     response = table.scan(
         ProjectionExpression="id"
@@ -42,7 +45,8 @@ def lambda_handler(event, context):
         print(f"Updated flood sensor: {update_response}")
 
         # Send invoke the EmailSender lambda function
-        invoke_response = lambda_client.invoke(
+        if danger:
+            lambda_client.invoke(
             FunctionName=function_name,
             InvocationType='Event',
             Payload=json.dumps({

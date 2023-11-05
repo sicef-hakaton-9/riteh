@@ -30,10 +30,8 @@ export default function BusesPage() {
   };
 
   useEffect(() => {
-    if (!stops) {
-      getStops();
-    }
     if (!busses) {
+      getStops();
       getBusses();
     }
 
@@ -67,7 +65,7 @@ export default function BusesPage() {
           .addTo(map);
       });
     }
-  }, [busses, stops, t]);
+  });
 
   return (
     <div className="w-full min-h-screen">

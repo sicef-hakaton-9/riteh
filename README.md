@@ -1,4 +1,4 @@
-# Aplikacija „<naziv_aplikacije>”
+# Aplikacija „NextCity”
 
 ## Tim „RiTeh”
 

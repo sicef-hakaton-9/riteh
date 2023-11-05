@@ -47,7 +47,7 @@ export default function Graph({
   yTickFormatter
 }: Props<string>) {
   return data && data.length > 0 ? (
-    <ResponsiveContainer width={"100%"} height={height} className={className}>
+    <ResponsiveContainer width={"90%"} height={height} className={className}>
       <LineChart
         data={data}
         margin={{

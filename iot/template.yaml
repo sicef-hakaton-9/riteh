@@ -71,3 +71,36 @@ Resources:
               Action:
                 - "dynamodb:*"
                 - "lambda:*"
+  WindturbineTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: windturbines
+        AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+  WindturbineSimulator:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      Handler: windturbine_simulator.lambda_handler
+      Runtime: python3.8
+      CodeUri: ./
+      Description: 'Windturbine Simulator'
+      MemorySize: 128
+      Timeout: 600
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Resource: "*"
+              Action:
+                - "dynamodb:*"

@@ -3,6 +3,10 @@ import PageClient from "./pageClient";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
+export const metadata = {
+  title: "Admin Ticket Management"
+};
+
 export default async function ViewTicketsPage({
   searchParams
 }: {
