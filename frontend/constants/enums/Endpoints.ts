@@ -1,5 +1,6 @@
 const Endpoints = {
   ADMIN_TICKETS: "/admin-tickets",
+  BILLING: "/billing",
   BILLS: "/bills",
   BUSES: "/buses",
   CHAT: "/goat-chat",

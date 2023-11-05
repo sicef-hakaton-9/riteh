@@ -66,5 +66,10 @@
     "percentage": "Fill percentage",
     "neighborhood": "Neighborhood",
     "type": "Waste type"
+  },
+  "billing" :{
+    "title": "Billing and services",
+    "autotrolej": "Monthly subscription",
+    "rijeka-plus": "Monthly subscription"
   }
 }

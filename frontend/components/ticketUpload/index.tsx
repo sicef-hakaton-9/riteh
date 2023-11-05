@@ -26,6 +26,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { submitTicket } from "@/services/ticket";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   category: z.string(),
@@ -35,6 +36,7 @@ const formSchema = z.object({
 });
 
 export default function TicketUpload() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       category: "",
@@ -71,6 +73,7 @@ export default function TicketUpload() {
       },
       session.data?.accessToken as string
     );
+    router.push("/ticketing");
   };
 
   const fetchCoords = () => {

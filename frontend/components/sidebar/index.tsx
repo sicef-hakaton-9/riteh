@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Bus, Home, ParkingSquare, Tag, TrafficCone, Trash2 } from "lucide-react";
+import {
+  Bus,
+  Home,
+  Newspaper,
+  ParkingSquare,
+  Receipt,
+  // Receipt,
+  Tag,
+  TrafficCone,
+  Trash2
+} from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
 import { useSession } from "next-auth/react";
 import { LogOut } from "lucide-react";
@@ -46,6 +56,11 @@ export default function Sidebar() {
       href: Endpoints.TICKETING,
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
+    },
+    {
+      href: Endpoints.BILLING,
+      icon: <Receipt className="h-5 w-5" />,
+      label: t("sidebar.bills")
     }
   ];
 

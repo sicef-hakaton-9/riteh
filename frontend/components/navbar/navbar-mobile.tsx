@@ -5,7 +5,16 @@ import Link from "next/link";
 import LocaleSwitcher from "./locale-switcher";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
-import { Bus, Home, LogOut, ParkingSquare, Tag, Trash2 } from "lucide-react";
+import {
+  Bus,
+  Home,
+  LogOut,
+  ParkingSquare,
+  Receipt,
+  Tag,
+  TrafficCone,
+  Trash2
+} from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
@@ -33,6 +42,11 @@ export function NavbarMobile() {
       label: t("sidebar.buses")
     },
     {
+      href: "/traffic",
+      icon: <TrafficCone className="h-5 w-5" />,
+      label: t("sidebar.traffic")
+    },
+    {
       href: "/waste",
       icon: <Trash2 className="h-5 w-5" />,
       label: t("sidebar.waste")
@@ -41,6 +55,11 @@ export function NavbarMobile() {
       href: "/ticketing",
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
+    },
+    {
+      href: "/billing",
+      icon: <Receipt className="h-5 w-5" />,
+      label: t("sidebar.bills")
     }
   ];
 
