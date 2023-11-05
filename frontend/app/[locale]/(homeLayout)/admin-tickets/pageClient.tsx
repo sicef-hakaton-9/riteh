@@ -24,7 +24,7 @@ export default function PageClient({
   const router = useRouter();
   return (
     <>
-      <div className="p-5 w-full flex gap-5">
+      <div className="p-5 w-full flex gap-5 flex-wrap justify-center md:justify-start">
         {initialData.map((ticket) => (
           <>
             <Card className="w-[300px] h-auto">
@@ -38,7 +38,7 @@ export default function PageClient({
               </div>
               <div className="flex p-3">
                 <div>
-                  <p>{ticket.title}</p>
+                  <p className="line-clamp-2">{ticket.title}</p>
                   <p className="text-gray-500 line-clamp-2">{ticket.description}</p>
                 </div>
               </div>
