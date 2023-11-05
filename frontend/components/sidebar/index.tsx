@@ -75,7 +75,7 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="sm:sticky hidden sm:block left-0 top-0 z-40 h-screen w:1/4 lg:w-1/6 transition-transform"
+      className="sm:sticky hidden sm:block left-0 top-0 z-40 h-screen w:1/4 xl:w-1/5 transition-transform"
       aria-label="Sidebar"
     >
       <div className="flex h-full flex-col overflow-y-auto border-r border-slate-200 bg-white px-3 py-4 dark:border-slate-700 dark:bg-slate-900">
