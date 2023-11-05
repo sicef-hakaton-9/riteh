@@ -2,16 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import {
-  Bus,
-  Home,
-  Newspaper,
-  ParkingSquare,
-  // Receipt,
-  Tag,
-  TrafficCone,
-  Trash2
-} from "lucide-react";
+import { Bus, Home, ParkingSquare, Tag, TrafficCone, Trash2 } from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
 import { useSession } from "next-auth/react";
 import { LogOut } from "lucide-react";
@@ -30,11 +21,6 @@ export default function Sidebar() {
       href: Endpoints.HOME,
       icon: <Home className="h-5 w-5" />,
       label: t("sidebar.home")
-    },
-    {
-      href: Endpoints.NEWS,
-      icon: <Newspaper className="h-5 w-5" />,
-      label: t("sidebar.news")
     },
     {
       href: Endpoints.PARKING,
@@ -61,12 +47,15 @@ export default function Sidebar() {
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
     }
-    // {
-    //   href: Endpoints.BILLS,
-    //   icon: <Receipt className="h-5 w-5" />,
-    //   label: t("sidebar.bills")
-    // }
   ];
+
+  if (session.data?.user.role === "business") {
+    items.push({
+      href: Endpoints.ADMIN_TICKETS,
+      icon: <Tag className="h-5 w-5" />,
+      label: t("sidebar.adminTickets")
+    });
+  }
 
   return (
     <div
@@ -108,10 +97,20 @@ export default function Sidebar() {
             </div>
           ) : (
             <div className="m-3">
-              <Button className="mr-2" variant={"blue"}>
+              <Button
+                className="mr-2"
+                variant={"blue"}
+                onClick={() => {
+                  window.location.href = Endpoints.LOGIN;
+                }}
+              >
                 <span>{t("auth.login")}</span>
               </Button>
-              <Button>
+              <Button
+                onClick={() => {
+                  window.location.href = Endpoints.REGISTER;
+                }}
+              >
                 <span>{t("auth.register")}</span>
               </Button>
             </div>
