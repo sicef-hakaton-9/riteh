@@ -1,18 +1,17 @@
 import NewsCard from "@/components/newsCard";
 import WeatherCard from "@/components/weatherCard";
-import { getForecast, getWeather } from "@/services/weather";
+import { getForecast } from "@/services/weather";
 
 export default async function Index() {
-  const weather = await getWeather("Niš");
   const forecast = await getForecast("Niš", 3);
 
   return (
     <>
-      <div className="flex-wrap flex gap-[8px] justify-center">
+      <div className="flex-wrap flex gap-[8px] justify-start mb-4 md:m-4">
         <WeatherCard
-          temperature={0}
-          title={weather.location.name}
-          weather={weather.current.condition.text}
+          temperature={forecast.current.temp_c}
+          title={forecast.location.name}
+          weather={forecast.current.condition.text}
           forecast={forecast.forecast.forecastday}
         />
       </div>

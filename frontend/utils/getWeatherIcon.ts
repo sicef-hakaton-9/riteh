@@ -1,26 +1,32 @@
+import sunny from "../public/weather/sunny.png";
+import partly_cloudy from "../public/weather/partly_cloudy.png";
+import showers from "../public/weather/showers.png";
+import cloudy from "../public/weather/cloudy.png";
+import overcast from "../public/weather/overcast.png";
+import mist from "../public/weather/mist.png";
+import rain from "../public/weather/rain.png";
+
 export default function getWeatherIcon(weatherType: string) {
   const weatherIcons = () => {
     switch (weatherType) {
       case "Sunny":
-        return "/weather/sunny.png";
+        return sunny;
       case "Partly cloudy":
-        return "/weather/partly_cloudy.png";
-      // case "showers":
-      // return "/weather/showers.png";
+        return partly_cloudy;
+      case "Showers":
+        return showers;
       case "Cloudy":
-        return "/weather/cloudy.png";
+        return cloudy;
       case "Overcast":
-        return "/weather/overcast.png";
+        return overcast;
       case "Mist":
-        return "/weather/mist.png";
+        return mist;
       case "Patchy rain possible":
-        return "/weather/patchy_rain.png";
-      case "Moderate rain":
-        return "/weather/moderate_rain.png";
+      case "Moderate rain at times":
       case "Heavy rain":
-        return "/weather/heavy_rain.png";
+        return rain;
       default:
-        return "/weather/sunny.png";
+        return sunny;
     }
   };
   return weatherIcons();
