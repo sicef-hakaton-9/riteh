@@ -26,6 +26,20 @@ interface Stop {
   };
 }
 
+interface Camera {
+  name: string;
+  id: string;
+}
+
+interface Roadwork {
+  id?: string;
+  location: {
+    lat?: number;
+    lang?: number;
+  };
+  image?: string;
+}
+
 interface Container {
   percentage: number;
   neighborhood: string;

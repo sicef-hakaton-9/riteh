@@ -9,6 +9,7 @@ const Endpoints = {
   REGISTER: "/register",
   REGISTERBUSINESS: "/register-business",
   TICKETING: "/ticketing",
+  TRAFFIC: "/traffic",
   WASTE: "/waste"
 };
 

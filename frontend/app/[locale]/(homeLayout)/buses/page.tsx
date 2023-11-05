@@ -20,6 +20,7 @@ export default function BusesPage() {
 
   const getBusses = async () => {
     const data = await getBusLocation();
+
     setBusses(data);
   };
 
