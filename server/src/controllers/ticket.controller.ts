@@ -29,6 +29,11 @@ export const getAllTickets = async (req: Request, res: Response) => {
     let matchesCategory = category ? item.category === category : true;
 
     if (matchesCity && matchesCategory) {
+      const command = new GetObjectCommand({
+        Bucket: bucketName,
+        Key: `${item.id}.jpeg`,
+      });
+      item.imageUrl = await getSignedUrl(s3, command, { expiresIn: 20000 })
       filteredItems.push(item);
     }
   }
