@@ -24,8 +24,8 @@ export const getAllTickets = async (req: Request, res: Response) => {
 
 export const createTicket = async (req: Request, res: Response) => {
     try {
-        const { x, y, title, description, category, image } = req.body;
-        if(!x || !y || !title || !description || !category || !image){
+        const { x, y, title, description, category, image, city } = req.body;
+        if(!x || !y || !title || !description || !category || !image || !city){
             return res.status(400).json({ message: 'Something is missing from your request, check your request and please try again' });
         }
         const id = uuidv4();
@@ -45,7 +45,7 @@ export const createTicket = async (req: Request, res: Response) => {
             return res.status(500).json({ message: 'Error occured while uploading ticket image' });
         }
 
-        const ticket = { id, x, y, title, description, category };
+        const ticket = { id, x, y, title, description, category, city };
         const putOperationInput = {
             TableName: tableName,
             Item: ticket
