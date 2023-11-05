@@ -18,7 +18,8 @@ export default async function Index() {
           weather={forecast.current.condition.text}
           forecast={forecast.forecast.forecastday}
         />
-        <Card className="flex w-full">
+        <Card className="flex w-full flex-col text-text">
+          <p className="px-4 py-2">Energija vjetra dobivena u proteklih 10 dana</p>
           <Graph xKey={"day"} yKey={"energyGenerated"} data={data} height={220} />
         </Card>
       </div>

@@ -89,7 +89,7 @@ export async function getBusStops() {
 
     const body = await res.json();
 
-    for (let i = 0; i < body.length / 2; i++) {
+    for (let i = 0; i < body.length / 3; i++) {
       stops.push({
         name: body[i].Naziv,
         location: {

@@ -14,7 +14,7 @@ export default async function CameraPage() {
 
   return (
     <main className="flex w-full h-full flex-col justify-start items-start p-6">
-      <h1 className="md:heading1 heading1-mobile">{await t("camera.title")}</h1>
+      <h1 className="md:heading2 heading1-mobile">{await t("camera.title")}</h1>
       <Tabs defaultValue="cameras" className="w-full mt-10">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="cameras">{t("tabs.cameras")}</TabsTrigger>
