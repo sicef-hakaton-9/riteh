@@ -4,9 +4,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function ChatIcon() {
   const t = useTranslations();
+  const router = useRouter();
 
   const contacts = [
     {
@@ -36,6 +38,7 @@ export default function ChatIcon() {
             <div
               key={index}
               className="flex flex-col items-center justify-center cursor-pointer"
+              onClick={() => router.push("/chat")}
             >
               <Image
                 src={contact.image}

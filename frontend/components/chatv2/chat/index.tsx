@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface IMsgDataTypes {
   roomId: string | number;
-  user: string;
+  user?: string;
   msg: string;
   time: string;
 }
@@ -19,13 +19,10 @@ const ChatPage = ({
 }: {
   roomId: string | number;
   socket: Socket;
-  username: string;
+  username?: string;
 }) => {
   const [currentMsg, setCurrentMsg] = useState("");
-  const [chat, setChat] = useState<IMsgDataTypes[]>([
-    { msg: "hello", roomId: 123, time: "12:00", user: "ivor" },
-    { msg: "hello", roomId: 123, time: "12:00", user: "asd" }
-  ]);
+  const [chat, setChat] = useState<IMsgDataTypes[]>([]);
 
   const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,11 +51,42 @@ const ChatPage = ({
         <p className="top-0 h-[52px] w-full flex items-center px-4 shadow-md">
           Chats
         </p>
+        {username?.includes("support") ? (
+          <>
+            <div className="flex items-center m-4">
+              <span className="mr-4 bg-yellow w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                I
+              </span>
+              <span>ivana.gal@gmail.com</span>
+            </div>
+            <div className="flex items-center m-4">
+              <span className="mr-4 bg-primary w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                A
+              </span>
+              <span>arian.skoki@gmail.com</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center m-4">
+              <span className="mr-4 bg-red w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                B
+              </span>
+              <span>support@busevi.hr</span>
+            </div>
+            <div className="flex items-center m-4">
+              <span className="mr-4 bg-primary w-[40px] h-[40px] rounded-full flex items-center justify-center text-white">
+                P
+              </span>
+              <span>support@parking.hr</span>
+            </div>
+          </>
+        )}
       </div>
       <div className="h-full w-full">
         <div className="px-8 top-0 h-[52px] w-full flex items-center shadow-md">
           <p>
-            <b>{username}</b> - Room Id: <b>{roomId}</b>
+            <b>{username}</b> | Room id: <b>{roomId}</b>
           </p>
         </div>
         <ScrollArea className="h-[calc(100%-118px)] flex flex-col-reverse px-4">
@@ -69,15 +97,12 @@ const ChatPage = ({
                 "flex items-center gap-2 mb-5" +
                 (user === username ? " flex-row-reverse" : "")
               }
-              // className={
-              // user === username ? style.chatProfileRight : style.chatProfileLeft
-              // }
             >
               <span
                 className="bg-slate-600 w-[24px] h-[24px] rounded-full flex items-center justify-center text-white"
                 style={{ textAlign: user === username ? "right" : "left" }}
               >
-                {user.charAt(0)}
+                {user?.charAt(0)}
               </span>
               <h3
                 className="bg-slate-400 rounded-full px-2 py-1 text-white"
@@ -100,7 +125,9 @@ const ChatPage = ({
               onChange={(e) => setCurrentMsg(e.target.value)}
               className="w-full"
             />
-            <Button className="w-[80px]">Send</Button>
+            <Button variant={"blue"} className="w-[80px]">
+              Send
+            </Button>
           </form>
         </div>
       </div>
