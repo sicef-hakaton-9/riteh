@@ -45,5 +45,13 @@
     "slots": "Free slots",
     "price": "Price",
     "goto": "Take me there"
+  },
+  "tickets": {
+    "title": "Submit a ticket",
+    "submit": {
+      "title": "Title",
+      "description": "Description",
+      "category": "Category"
+    }
   }
 }
