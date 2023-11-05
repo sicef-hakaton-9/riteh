@@ -8,12 +8,12 @@ export default async function Index() {
   return (
     <>
       <div className="flex-wrap flex gap-[8px] justify-start mb-4 md:m-4">
-      {/*   <WeatherCard
+        <WeatherCard
           temperature={forecast.current.temp_c}
           title={forecast.location.name}
           weather={forecast.current.condition.text}
           forecast={forecast.forecast.forecastday}
-        /> */}
+        />
       </div>
       <div className="md:px-4">
         <div className="flex justify-between">
