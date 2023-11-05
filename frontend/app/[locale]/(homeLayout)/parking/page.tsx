@@ -58,7 +58,7 @@ export default function ParkingPage() {
 
   return (
     <div className="w-full min-h-screen">
-      <section className="h-screen w-full md:overflow-hidden">
+      <section className="h-screen w-full overflow-hidden">
         <div id="map" className="h-full"></div>
       </section>
     </div>

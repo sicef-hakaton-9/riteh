@@ -28,6 +28,7 @@ const CheckoutLoader = ({
           Paddle.Environment.set("sandbox");
         }
         Paddle.Setup({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           eventCallback: (data: any) => {
             if (data.event?.includes("Checkout")) {
               const prices = data.eventData.checkout.prices.customer;

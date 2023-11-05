@@ -57,3 +57,6 @@ interface CheckoutData {
   tax: number | null;
   tax_rate: string | null;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare let Paddle: any;

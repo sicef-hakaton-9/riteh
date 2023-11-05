@@ -6,7 +6,11 @@ import { Products } from "@/constants/checkout";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Checkout({ params: { id } }: { params: { id: string } }) {
+export default function Checkout({
+  params: { id }
+}: {
+  params: { id: "65811" | "65812" };
+}) {
   const { description, image, title } = Products[id];
 
   const [checkoutData, setCheckoutData] = useState<CheckoutData>({
