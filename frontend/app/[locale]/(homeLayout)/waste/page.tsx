@@ -6,9 +6,11 @@ import mapbox from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { getWaste } from "@/services/waste";
 import WasteMarker from "@/components/map/wasteMarker";
+import { useTranslations } from "next-intl";
 
 export default function WastePage() {
   const [containers, setContainers] = useState<Container[] | null>(null);
+  const t = useTranslations();
 
   mapbox.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY || "";
 
@@ -33,7 +35,19 @@ export default function WastePage() {
       containers.map((container: Container) => {
         const el = document.createElement("div");
         const markerRoute = createRoot(el);
-        markerRoute.render(<WasteMarker percentage={container.percentage} />);
+        markerRoute.render(
+          <WasteMarker
+            percentage={container.percentage}
+            type={container.type}
+            neighborhood={container.neighborhood}
+            percentageTranslation={t("waste.percentage")}
+            typeTranslation={t("waste.type")}
+            neighborhoodTranslation={t("waste.neighborhood")}
+            gotoTranslation={t("parking.goto")}
+            lang={container.location.lang}
+            lat={container.location.lat}
+          />
+        );
 
         new mapbox.Marker(el)
           .setLngLat([container.location.lang, container.location.lat])

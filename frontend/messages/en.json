@@ -45,5 +45,10 @@
     "slots": "Free slots",
     "price": "Price",
     "goto": "Take me there"
+  },
+  "waste": {
+    "percentage": "Fill percentage",
+    "neighborhood": "Neighborhood",
+    "type": "Waste type"
   }
 }

@@ -27,7 +27,7 @@ export default function ChatIcon() {
     <Popover>
       <PopoverTrigger asChild>
         <div className="fixed bottom-0 right-0 bg-primary p-4 m-7 z-40 rounded-full cursor-pointer">
-          <MessageCircle className="w-5 h-5 z-50" />
+          <MessageCircle className="w-5 h-5 z-50" color="white" />
         </div>
       </PopoverTrigger>
       <PopoverContent>

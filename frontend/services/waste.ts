@@ -62,6 +62,7 @@ export async function getWaste() {
     );
     const body = await res.json();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body.result.records.map((container: any) => {
       if (
         container._id &&
