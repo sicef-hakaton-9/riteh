@@ -49,3 +49,14 @@ interface Container {
     lat: number;
   };
 }
+
+interface CheckoutData {
+  currency: string | null;
+  total: string | null;
+  subtotal: string | null;
+  tax: number | null;
+  tax_rate: string | null;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare let Paddle: any;

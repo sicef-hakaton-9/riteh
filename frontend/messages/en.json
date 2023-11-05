@@ -67,5 +67,10 @@
     "neighborhood": "Neighborhood",
     "type": "Waste type"
   },
-  "viewOnMap": "View on map"
+  "viewOnMap": "View on map",
+  "billing" :{
+    "title": "Billing and services",
+    "autotrolej": "Monthly subscription",
+    "rijeka-plus": "Monthly subscription"
+  }
 }
