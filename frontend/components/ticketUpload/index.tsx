@@ -54,6 +54,7 @@ export default function TicketUpload() {
     submitTicket(
       {
         ...values,
+        city: "Rijeka",
         image: fileBase64?.split(",")[1],
         x: (
           coords as {
@@ -87,7 +88,7 @@ export default function TicketUpload() {
   const t = useTranslations();
 
   return (
-    <Card className="w-[500px] h-[600px]">
+    <Card className="w-[500px] h-[600px] m-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 p-4">
           <h1 className="heading3">{t("tickets.title")}</h1>

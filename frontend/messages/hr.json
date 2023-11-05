@@ -10,7 +10,8 @@
     "waste": "Otpad",
     "ticketing": "Upiti",
     "bills": "Plati račune",
-    "traffic": "Promet"
+    "traffic": "Promet",
+    "adminTickets": "Pregled upita"
   },
   "chooseLanguage": "Izaberi jezik",
   "parking": {

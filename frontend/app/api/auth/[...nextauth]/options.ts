@@ -6,7 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 interface MyUser {
   email: string;
   name: string;
-  // role: string;
+  role: string;
 }
 declare module "next-auth" {
   interface User {
@@ -43,7 +43,11 @@ export const authOptions: NextAuthOptions = {
 
         const decodedPayload = JSON.parse(atob(payload));
         token.accessToken = user.token;
-        token.user = { email: decodedPayload.email, name: decodedPayload.name };
+        token.user = {
+          email: decodedPayload.email,
+          name: decodedPayload.name,
+          role: decodedPayload.role
+        };
       }
 
       return token;
