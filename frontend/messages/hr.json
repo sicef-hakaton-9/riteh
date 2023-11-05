@@ -25,5 +25,10 @@
   "tabs": {
     "cameras": "Kamere",
     "roadworks": "Radovi u prometu"
+  },
+  "waste": {
+    "percentage": "Popunjenost",
+    "neighborhood": "Mjesni odbor",
+    "type": "Vrsta otpada"
   }
 }

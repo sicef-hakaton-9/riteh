@@ -50,8 +50,13 @@
   "camera": {
     "title": "Trafic Cameras & Roadworks"
   },
-"tabs": {
-  "cameras": "Cameras",
-  "roadworks": "Roadworks"
-}
+  "tabs": {
+    "cameras": "Cameras",
+    "roadworks": "Roadworks"
+  },
+  "waste": {
+    "percentage": "Fill percentage",
+    "neighborhood": "Neighborhood",
+    "type": "Waste type"
+  }
 }

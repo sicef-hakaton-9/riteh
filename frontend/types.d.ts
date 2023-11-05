@@ -39,3 +39,13 @@ interface Roadwork {
   };
   image?: string;
 }
+
+interface Container {
+  percentage: number;
+  neighborhood: string;
+  type: string;
+  location: {
+    lang: number;
+    lat: number;
+  };
+}
