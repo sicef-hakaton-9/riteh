@@ -7,24 +7,24 @@ import Image from "next/image";
 
 interface Props {
   className?: string;
+  setFileBase64: (fileBase64: string) => void;
 }
 
-export default function ImageUpload({ className }: Props) {
+export default function ImageUpload({ className, setFileBase64 }: Props) {
   const defaultImage = "/images/image-upload-default.svg";
-
-  const [, setSelectedFile] = useState<File | undefined>();
 
   const [previewURL, setPreviewURL] = useState<string | null>(defaultImage);
   // defaultImage ? defaultImage : null
   const thumbnailUpload = useRef<HTMLInputElement>(null);
 
   const handleFileUrlChange = (fileUrl: File | undefined) => {
-    setSelectedFile(fileUrl);
     if (fileUrl) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewURL(reader.result as string | null);
+        setFileBase64(reader.result as string);
       };
+
       reader.readAsDataURL(fileUrl);
     } else {
       setPreviewURL(null);
@@ -67,7 +67,7 @@ export default function ImageUpload({ className }: Props) {
         <div
           className={
             className ||
-            "flex flex-col justify-center items-center relative h-[350px] border-solid border-2 rounded-md"
+            "m-[16px] flex flex-col justify-center items-center relative min-h-[150px] max-h-[350px] border-solid border-2 rounded-md"
           }
         >
           <Image
