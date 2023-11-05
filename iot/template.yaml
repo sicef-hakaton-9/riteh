@@ -37,3 +37,37 @@ Resources:
               Resource: "*"
               Action:
                 - "dynamodb:*"
+  FloodSensorTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: flood_sensors
+        AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+  FloodSensorSimulator:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      Handler: flood_simulator.lambda_handler
+      Runtime: python3.8
+      CodeUri: ./
+      Description: 'Flood Sensor Simulator'
+      MemorySize: 128
+      Timeout: 600
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Resource: "*"
+              Action:
+                - "dynamodb:*"
+                - "lambda:*"

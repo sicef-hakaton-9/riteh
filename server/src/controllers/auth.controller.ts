@@ -6,12 +6,15 @@ import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
+import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { OAuth2Client } from 'google-auth-library';
 
 dotenv.config()
 
 const dynamodb = new DynamoDBClient({ credentials: fromNodeProviderChain({}) })
 const tableName = 'users';
+
+const lambdaClient = new LambdaClient({ credentials: fromNodeProviderChain({}) });
 
 const google_client_id = process.env.GOOGLE_CLIENT_ID
 const client = new OAuth2Client(google_client_id);
@@ -50,6 +53,14 @@ export const registerBusinessController = async (req: Request, res: Response) =>
       }
       const putOperationCommand = new PutCommand(putOperationInput)
       await dynamodb.send(putOperationCommand)
+
+      // Invoke lambda function to send email
+      const lambdaInput = {
+        FunctionName: 'EmailSender',
+        Payload: JSON.stringify({ email, businessName })
+      }
+      const lambdaCommand = new InvokeCommand(lambdaInput)
+      await lambdaClient.send(lambdaCommand)
   
       // Return success response
       return res.status(201).json({ message: 'Business account created successfully' });
