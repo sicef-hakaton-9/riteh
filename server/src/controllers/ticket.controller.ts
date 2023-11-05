@@ -13,13 +13,31 @@ const tableName = 'tickets';
 const bucketName = 'sicef-hackathon-tickets'
 
 export const getAllTickets = async (req: Request, res: Response) => {
-    const data = await dynamodb.send(new ScanCommand({
-        TableName: tableName
-      }));
-    
-      console.log(data.Items);
-    
-      return res.status(200).json({ 'allTickets': data.Items });
+  const { city } = req.params;
+  const { category } = req.query;
+  console.log(city, category);
+
+  const data = await dynamodb.send(new ScanCommand({
+    TableName: tableName
+  }));
+  let items = data.Items || [];
+  let filteredItems: any[] = []; // znam da nije TS nacin, ali nemamo vremena za debuggiranje :D
+
+  // Using a for loop to filter items
+  for (let item of items) {
+    // Assuming the structure where DynamoDB returns the type descriptor
+    let matchesCity = item.city === city;
+    let matchesCategory = category ? item.category === category : true;
+
+    // If both city and category (if provided) match, add to filteredItems
+    if (matchesCity && matchesCategory) {
+      filteredItems.push(item);
+    }
+  }
+
+  console.log(data.Items);
+
+  return res.status(200).json({ 'allTickets': filteredItems });
 };
 
 export const createTicket = async (req: Request, res: Response) => {
