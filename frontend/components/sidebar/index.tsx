@@ -7,7 +7,7 @@ import {
   Home,
   Newspaper,
   ParkingSquare,
-  Receipt,
+  // Receipt,
   Tag,
   Trash2
 } from "lucide-react";
@@ -17,6 +17,8 @@ import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
+import Endpoints from "@/constants/enums/Endpoints";
+import { Separator } from "../ui/separator";
 
 export default function Sidebar() {
   const t = useTranslations();
@@ -24,40 +26,40 @@ export default function Sidebar() {
 
   const items = [
     {
-      href: "/",
+      href: Endpoints.HOME,
       icon: <Home className="h-5 w-5" />,
       label: t("sidebar.home")
     },
     {
-      href: "/news",
+      href: Endpoints.NEWS,
       icon: <Newspaper className="h-5 w-5" />,
       label: t("sidebar.news")
     },
     {
-      href: "/parking",
+      href: Endpoints.PARKING,
       icon: <ParkingSquare className="h-5 w-5" />,
       label: t("sidebar.parking")
     },
     {
-      href: "/buses",
+      href: Endpoints.BUSES,
       icon: <Bus className="h-5 w-5" />,
       label: t("sidebar.buses")
     },
     {
-      href: "/waste",
+      href: Endpoints.WASTE,
       icon: <Trash2 className="h-5 w-5" />,
       label: t("sidebar.waste")
     },
     {
-      href: "/ticketing",
+      href: Endpoints.TICKETING,
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
-    },
-    {
-      href: "/bills",
-      icon: <Receipt className="h-5 w-5" />,
-      label: t("sidebar.bills")
     }
+    // {
+    //   href: Endpoints.BILLS,
+    //   icon: <Receipt className="h-5 w-5" />,
+    //   label: t("sidebar.bills")
+    // }
   ];
 
   return (
@@ -82,6 +84,7 @@ export default function Sidebar() {
               </Link>
             </li>
           ))}
+          <Separator />
           <LocaleSwitcher />
         </ul>
         <div className="mt-auto flex">

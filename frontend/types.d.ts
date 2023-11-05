@@ -7,6 +7,23 @@ interface Parking {
     lang: number;
     lat: number;
   };
+  price: string;
+}
+
+interface Bus {
+  number: string;
+  location: {
+    lat: number;
+    lang: number;
+  };
+}
+
+interface Stop {
+  name: string;
+  location: {
+    lat: number;
+    lang: number;
+  };
 }
 
 interface Container {

@@ -1,7 +1,15 @@
 const Endpoints = {
+  BILLS: "/bills",
+  BUSES: "/buses",
   CHAT: "/goat-chat",
+  HOME: "/",
   LOGIN: "/login",
-  REGISTER: "/register"
+  NEWS: "/news",
+  PARKING: "/parking",
+  REGISTER: "/register",
+  REGISTERBUSINESS: "/register-business",
+  TICKETING: "/ticketing",
+  WASTE: "/waste"
 };
 
 export default Endpoints;
