@@ -3,7 +3,7 @@ import WeatherCard from "@/components/weatherCard";
 import { getForecast } from "@/services/weather";
 
 export default async function Index() {
-  const forecast = await getForecast("Niš", 3);
+  const forecast = await getForecast("Rijeka", 3);
 
   return (
     <>
