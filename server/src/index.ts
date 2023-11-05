@@ -5,13 +5,23 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSdoc from 'swagger-jsdoc';
 import bodyParser from "body-parser";
 import cors from 'cors';
+import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 
 import authRouter from "./routes/auth.routes";
 import ticketRouter from "./routes/ticket.routes"
 import containerRouter from "./routes/container.routes"
+import chatRouter from "./routes/chat.routes"
 import emailRouter from "./routes/email.routes"
 import { createServer } from "http";
 import { Server } from "socket.io";
+
+import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
+
+// Configure the AWS SDK with your region
+const snsClient = new SNSClient({ credentials: fromNodeProviderChain({}) });
+
+// Specify the ARN of your SNS topic
+const snsTopicArn = process.env.SNS_TOPIC_ARN;
 
 const swaggerOptions = {
     definition: {
@@ -55,9 +65,40 @@ io
   .on("connection", (socket) => {
   console.log("a user connected", socket.id);
 
-  socket.on("join_room", (roomId) => {
+  socket.on("join_room", async (roomId) => {
     socket.join(roomId);
     console.log(`user with id-${socket.id} joined room - ${roomId}`);
+
+    const messageGroupId = "cistoca";
+
+    // Create a message for SNS
+    const message = {
+      roomId: roomId
+    };
+
+    // Create the parameters for the PublishCommand
+    const params: any = {
+      Message: message, // SNS topics require a string message
+      TopicArn: snsTopicArn,
+      MessageGroupId: messageGroupId,  // Required for FIFO topics
+      MessageDeduplicationId: `${socket.id}-${Date.now()}`, // Required if deduplication is not enabled on the topic
+      MessageAttributes: {
+        'roomId': {
+          DataType: 'String', // Specify the data type, it can be String, Number, or Binary
+          StringValue: roomId // The value of the attribute, which is the roomId in this case
+        }
+    }}
+
+    // Create the command to publish a message
+    const publishCommand = new PublishCommand(params);
+
+    try {
+      // Publish the message to the SNS topic
+      const data = await snsClient.send(publishCommand);
+      console.log(`Message sent to SNS topic - ${data.MessageId}`);
+    } catch (err) {
+      console.error("Error publishing to SNS", err);
+    }
   });
 
   socket.on("send_msg", (data) => {
@@ -82,6 +123,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/ticket", ticketRouter);
 app.use("/api/container", containerRouter);
 app.use("/api/email", emailRouter)
+app.use("/api/chat", chatRouter)
 
 app.get('/health', (req: Request, res: Response) => res.status(200).json({ status: 'Healthy.' }));
 
