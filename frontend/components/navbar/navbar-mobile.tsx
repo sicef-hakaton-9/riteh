@@ -44,6 +44,14 @@ export function NavbarMobile() {
     }
   ];
 
+  if (session.data?.user.role === "business") {
+    items.push({
+      href: "/admin-tickets",
+      icon: <Tag className="h-5 w-5" />,
+      label: t("sidebar.adminTickets")
+    });
+  }
+
   return (
     <div>
       <Sheet>
