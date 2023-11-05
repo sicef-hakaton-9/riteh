@@ -3,7 +3,7 @@ const nextConfig = {
   experimental: {
     serverActions: true
   },
-  images: { domains: ["cdn.weatherapi.com", "www.shutterstock.com"] },
+  images: { domains: ["cdn.weatherapi.com", "www.shutterstock.com", "m.hak.hr"] },
   reactStrictMode: false
 };
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -37,7 +37,7 @@ export default function ParkingMarker({
           <div>{parking.name}</div>
           <div
             className={`w-2 h-2 rounded-full ml-3 ${
-              parking.capacity === parking.free_spots ? "bg-red-400" : "bg-green-400"
+              parking.capacity === parking.free_spots ? "bg-red" : "bg-green"
             }`}
           />
         </section>

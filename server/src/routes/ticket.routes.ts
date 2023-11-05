@@ -37,7 +37,7 @@ const router = express.Router();
  *       500:
  *         description: Internal server error.
  */
-router.get('/get-all-tickets', getAllTickets);
+router.get('/get-all-tickets/:city', getAllTickets);
 
 /**
  * @swagger

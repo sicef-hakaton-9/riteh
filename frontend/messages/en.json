@@ -37,7 +37,8 @@
     "buses": "Buses",
     "waste": "Waste",
     "ticketing": "Submit a ticket",
-    "bills": "Pay bills"
+    "bills": "Pay bills",
+    "traffic": "Traffic"
   },
   "chooseLanguage": "Choose language",
   "parking": {
@@ -53,5 +54,17 @@
       "description": "Description",
       "category": "Category"
     }
+  },
+  "camera": {
+    "title": "Trafic Cameras & Roadworks"
+  },
+  "tabs": {
+    "cameras": "Cameras",
+    "roadworks": "Roadworks"
+  },
+  "waste": {
+    "percentage": "Fill percentage",
+    "neighborhood": "Neighborhood",
+    "type": "Waste type"
   }
 }

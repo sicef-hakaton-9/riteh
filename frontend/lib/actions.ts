@@ -1,6 +1,37 @@
 /* eslint-disable */
 "use server";
 
+import { parseMarker } from "./utils";
+
+export async function getRoadworkReason(id: string) {
+  try {
+    const res = await fetch(`https://m.hak.hr/poi.asp?t=8987&id=${id}`);
+    const body = await res.text();
+
+    return body;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+export async function getRoadwork() {
+  const markers: Roadwork[] = [];
+  try {
+    const res = await fetch("https://m.hak.hr/poi.asp?t=8987&tko=0");
+    const body = await res.text();
+    body.replace("<markers>", "").replace("</markers>", "");
+    body.split("/>").map((marker) => {
+      markers.push(parseMarker(marker));
+    });
+
+    return markers;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
 export async function getBusStops() {
   const stops: Stop[] = [];
   try {
