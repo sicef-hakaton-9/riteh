@@ -9,7 +9,8 @@
     "buses": "Busevi",
     "waste": "Otpad",
     "ticketing": "Upiti",
-    "bills": "Plati račune"
+    "bills": "Plati račune",
+    "traffic": "Promet"
   },
   "chooseLanguage": "Izaberi jezik",
   "parking": {
@@ -17,5 +18,12 @@
     "slots": "Slobodna mjesta",
     "price": "Cijena",
     "goto": "Odvedi me"
+  },
+  "camera": {
+    "title": "Prometne kamere i radovi"
+  },
+  "tabs": {
+    "cameras": "Kamere",
+    "roadworks": "Radovi u prometu"
   }
 }

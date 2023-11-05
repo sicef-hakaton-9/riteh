@@ -9,6 +9,7 @@ import {
   ParkingSquare,
   // Receipt,
   Tag,
+  TrafficCone,
   Trash2
 } from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
@@ -38,6 +39,11 @@ export default function Sidebar() {
       href: Endpoints.BUSES,
       icon: <Bus className="h-5 w-5" />,
       label: t("sidebar.buses")
+    },
+    {
+      href: Endpoints.TRAFFIC,
+      icon: <TrafficCone className="h-5 w-5" />,
+      label: t("sidebar.traffic")
     },
     {
       href: Endpoints.WASTE,

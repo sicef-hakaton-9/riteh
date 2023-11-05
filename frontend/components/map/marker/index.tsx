@@ -8,10 +8,10 @@ import Link from "next/link";
 export default function ParkingMarker({
   capacityTranslation,
   gotoTranslation,
-  parking,
   lang,
-  priceTranslation,
   lat,
+  parking,
+  priceTranslation,
   slotsTranslation
 }: {
   parking: Parking;
