@@ -48,7 +48,7 @@ export default function WeatherCard({
             <p>{weather}</p>
           </div>
         </div>
-        <div className="hide-scrollbar px-[16px] overflow-hidden overflow-x-scroll">
+        <div className="hide-scrollbar px-[16px] overflow-hidden overflow-x-scroll mb-6">
           <div className=" flex gap-8">
             <WeatherForecastCard weather="Sunny" temperature={20} />
             <WeatherForecastCard weather="Partly cloudy" temperature={17} />
