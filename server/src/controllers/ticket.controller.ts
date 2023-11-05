@@ -25,11 +25,9 @@ export const getAllTickets = async (req: Request, res: Response) => {
 
   // Using a for loop to filter items
   for (let item of items) {
-    // Assuming the structure where DynamoDB returns the type descriptor
     let matchesCity = item.city === city;
     let matchesCategory = category ? item.category === category : true;
 
-    // If both city and category (if provided) match, add to filteredItems
     if (matchesCity && matchesCategory) {
       filteredItems.push(item);
     }
