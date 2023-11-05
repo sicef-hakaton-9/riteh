@@ -45,6 +45,12 @@
   -moz-box-shadow: 1px -17px 35px -8px rgba(0, 0, 0, 0.5);
 }
 
+.checkout {
+  box-shadow: 14px -3px 21px -3px rgba(0,0,0,0.2);
+-webkit-box-shadow: 14px -3px 21px -3px rgba(0,0,0,0.2);
+-moz-box-shadow: 14px -3px 21px -3px rgba(0,0,0,0.2);
+}
+
 @layer utilities {
   .heading1 {
     @apply text-[64px] leading-[67.2px] font-bold;

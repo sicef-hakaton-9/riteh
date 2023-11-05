@@ -1,4 +1,5 @@
 const Endpoints = {
+  BILLING: "/billing",
   BILLS: "/bills",
   BUSES: "/buses",
   CHAT: "/goat-chat",

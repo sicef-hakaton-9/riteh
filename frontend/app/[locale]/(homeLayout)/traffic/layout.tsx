@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Trafic cameras"
+  title: "Traffic"
 };
 
 export default function CameraLayout({ children }: { children: React.ReactNode }) {

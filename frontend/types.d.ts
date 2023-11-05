@@ -49,3 +49,11 @@ interface Container {
     lat: number;
   };
 }
+
+interface CheckoutData {
+  currency: string | null;
+  total: string | null;
+  subtotal: string | null;
+  tax: number | null;
+  tax_rate: string | null;
+}

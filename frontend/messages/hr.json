@@ -2,6 +2,28 @@
   "index": {
     "title": "Pozdrav!"
   },
+  "auth": {
+    "login": "Prijava",
+    "logout": "Odjava",
+    "register": "Registracija",
+    "email": "Email",
+    "name": "Ime",
+    "password": "Lozinka",
+    "city": "Grad",
+    "address": "Adresa",
+    "country": "Država",
+    "submit": "Predaj",
+    "googleProvider": {
+      "title": "Prijavi se putem Google"
+    },
+    "error": "Oops, something went wrong!",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "areYouABusiness": "Are you a business?",
+    "registerAsBusiness": "Register as a business",
+    "notABusiness": "Not a business?",
+    "registerAsUser": "Register as a user"
+  },
   "sidebar": {
     "home": "Početna",
     "news": "Novosti",
@@ -30,5 +52,10 @@
     "percentage": "Popunjenost",
     "neighborhood": "Mjesni odbor",
     "type": "Vrsta otpada"
+  },
+  "billing" :{
+    "title": "Naplata i usluge",
+    "autotrolej": "Mjesečna pretplata",
+    "rijeka-plus": "Monthly subscription"
   }
 }

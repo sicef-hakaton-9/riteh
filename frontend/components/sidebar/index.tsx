@@ -7,6 +7,7 @@ import {
   Home,
   Newspaper,
   ParkingSquare,
+  Receipt,
   // Receipt,
   Tag,
   TrafficCone,
@@ -60,12 +61,12 @@ export default function Sidebar() {
       href: Endpoints.TICKETING,
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.ticketing")
+    },
+    {
+      href: Endpoints.BILLING,
+      icon: <Receipt className="h-5 w-5" />,
+      label: t("sidebar.bills")
     }
-    // {
-    //   href: Endpoints.BILLS,
-    //   icon: <Receipt className="h-5 w-5" />,
-    //   label: t("sidebar.bills")
-    // }
   ];
 
   return (
@@ -109,10 +110,10 @@ export default function Sidebar() {
           ) : (
             <div className="m-3">
               <Button className="mr-2" variant={"blue"}>
-                <span>{t("auth.login")}</span>
+                <Link href="/login">{t("auth.login")}</Link>
               </Button>
               <Button>
-                <span>{t("auth.register")}</span>
+                <Link href="/register">{t("auth.register")}</Link>
               </Button>
             </div>
           )}

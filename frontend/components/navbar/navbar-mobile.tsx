@@ -13,6 +13,7 @@ import {
   ParkingSquare,
   Receipt,
   Tag,
+  TrafficCone,
   Trash2
 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
@@ -47,6 +48,11 @@ export function NavbarMobile() {
       label: t("sidebar.buses")
     },
     {
+      href: "/traffic",
+      icon: <TrafficCone className="h-5 w-5" />,
+      label: t("sidebar.traffic")
+    },
+    {
       href: "/waste",
       icon: <Trash2 className="h-5 w-5" />,
       label: t("sidebar.waste")
@@ -57,7 +63,7 @@ export function NavbarMobile() {
       label: t("sidebar.ticketing")
     },
     {
-      href: "/bills",
+      href: "/billing",
       icon: <Receipt className="h-5 w-5" />,
       label: t("sidebar.bills")
     }
