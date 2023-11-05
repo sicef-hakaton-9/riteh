@@ -10,6 +10,8 @@ const Endpoints = {
   PARKING: "/parking",
   REGISTER: "/register",
   REGISTERBUSINESS: "/register-business",
+  TICKET_VIEW: (id: string, x: number, y: number) =>
+    `/ticket-view?id=${id}&x=${x}&y=${y}`,
   TICKETING: "/ticketing",
   TRAFFIC: "/traffic",
   WASTE: "/waste"
