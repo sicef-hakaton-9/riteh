@@ -66,5 +66,6 @@
     "percentage": "Fill percentage",
     "neighborhood": "Neighborhood",
     "type": "Waste type"
-  }
+  },
+  "viewOnMap": "View on map"
 }

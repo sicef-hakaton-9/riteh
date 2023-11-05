@@ -3,7 +3,14 @@ const nextConfig = {
   experimental: {
     serverActions: true
   },
-  images: { domains: ["cdn.weatherapi.com", "www.shutterstock.com", "m.hak.hr"] },
+  images: {
+    domains: [
+      "cdn.weatherapi.com",
+      "www.shutterstock.com",
+      "m.hak.hr",
+      "sicef-hackathon-tickets.s3.eu-central-1.amazonaws.com"
+    ]
+  },
   reactStrictMode: false
 };
 // eslint-disable-next-line @typescript-eslint/no-var-requires
