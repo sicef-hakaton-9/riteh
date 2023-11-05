@@ -51,6 +51,7 @@ module.exports = {
           200: "#55616D"
         },
         primary: "#79B4A9",
+        primaryHover: "#619087",
         secondary: "#EE7674",
         text: "#424B54",
         white: {

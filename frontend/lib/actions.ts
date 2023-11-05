@@ -12,7 +12,7 @@ export async function getparkingswithlocation() {
     );
     const body = await res.json();
 
-    body.map((parking: any) => {
+    body.map((parking: ParkingData) => {
       if (parking.parking_data.lokacija) {
         parkings.push({
           capacity: parking.parking_data.kapacitet,

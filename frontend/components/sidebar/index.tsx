@@ -12,9 +12,15 @@ import {
   Trash2
 } from "lucide-react";
 import LocaleSwitcher from "../navbar/locale-switcher";
+import { useSession } from "next-auth/react";
+import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
+import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
 
 export default function Sidebar() {
   const t = useTranslations();
+  const session = useSession();
 
   const items = [
     {
@@ -79,27 +85,28 @@ export default function Sidebar() {
           <LocaleSwitcher />
         </ul>
         <div className="mt-auto flex">
-          <div className="flex w-full justify-between">
-            <span className="text-sm font-medium text-black dark:text-white">
-              email@example.com
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              aria-roledescription="more menu"
-              fill="none"
-              stroke="currentColor"
-              className="h-5 w-5 text-black dark:text-white"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
-            </svg>
-          </div>
+          {session.status === "loading" ? (
+            <Skeleton className="w-full h-[30px] rounded-md m-3" />
+          ) : session.data ? (
+            <div className="flex w-full justify-between m-3">
+              <span className="text-sm font-medium text-black dark:text-white">
+                {session.data?.user.email}
+              </span>
+              <LogOut
+                className="h-5 w-5 cursor-pointer"
+                onClick={async () => signOut()}
+              />
+            </div>
+          ) : (
+            <div className="m-3">
+              <Button className="mr-2" variant={"blue"}>
+                <span>{t("auth.login")}</span>
+              </Button>
+              <Button>
+                <span>{t("auth.register")}</span>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>

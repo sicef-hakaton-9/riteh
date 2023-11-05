@@ -36,7 +36,7 @@ export default function ParkingPage() {
       parkings.map((parking: Parking) => {
         const el = document.createElement("div");
         const markerRoute = createRoot(el);
-        markerRoute.render(<ParkingMarker id={parking.name} />);
+        markerRoute.render(<ParkingMarker />);
 
         new mapbox.Marker(el)
           .setLngLat([parking.location.lang, parking.location.lat])

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-export default function ParkingMarker({ id }) {
+export default function ParkingMarker() {
   return (
     <div>
       <Image
