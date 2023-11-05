@@ -10,6 +10,7 @@ import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import authRouter from "./routes/auth.routes";
 import ticketRouter from "./routes/ticket.routes"
 import containerRouter from "./routes/container.routes"
+import chatRouter from "./routes/chat.routes"
 import emailRouter from "./routes/email.routes"
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -122,6 +123,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/ticket", ticketRouter);
 app.use("/api/container", containerRouter);
 app.use("/api/email", emailRouter)
+app.use("/api/chat", chatRouter)
 
 app.get('/health', (req: Request, res: Response) => res.status(200).json({ status: 'Healthy.' }));
 
