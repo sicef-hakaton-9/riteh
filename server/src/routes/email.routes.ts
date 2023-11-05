@@ -1,9 +1,9 @@
 import express from 'express';
-import { getAllContainers } from '../controllers/container.controller';
+import { createBusinessEmailContent } from '../controllers/email.controller';
 import checkIfUserCanAccess from '../middleware/checkIfUserCanAccess'
 import checkIfUserIsBusiness from '../middleware/checkIfUserIsBusiness';
 const router = express.Router();
 
-router.post('/set-email', checkIfUserCanAccess, checkIfUserIsBusiness, getAllContainers);
+router.post('/set-email', checkIfUserCanAccess, checkIfUserIsBusiness, createBusinessEmailContent);
 
 export default router;
