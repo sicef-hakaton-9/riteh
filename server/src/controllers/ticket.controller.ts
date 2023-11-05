@@ -13,19 +13,40 @@ const tableName = 'tickets';
 const bucketName = 'sicef-hackathon-tickets'
 
 export const getAllTickets = async (req: Request, res: Response) => {
-    const data = await dynamodb.send(new ScanCommand({
-        TableName: tableName
-      }));
-    
-      console.log(data.Items);
-    
-      return res.status(200).json({ 'allTickets': data.Items });
+  const { city } = req.params;
+  const { category } = req.query;
+  console.log(city, category);
+
+  const data = await dynamodb.send(new ScanCommand({
+    TableName: tableName
+  }));
+  let items = data.Items || [];
+  let filteredItems: any[] = []; // znam da nije TS nacin, ali nemamo vremena za debuggiranje :D
+
+  // Using a for loop to filter items
+  for (let item of items) {
+    let matchesCity = item.city === city;
+    let matchesCategory = category ? item.category === category : true;
+
+    if (matchesCity && matchesCategory) {
+      const command = new GetObjectCommand({
+        Bucket: bucketName,
+        Key: `${item.id}.jpeg`,
+      });
+      item.imageUrl = await getSignedUrl(s3, command, { expiresIn: 20000 })
+      filteredItems.push(item);
+    }
+  }
+
+  console.log(data.Items);
+
+  return res.status(200).json({ 'allTickets': filteredItems });
 };
 
 export const createTicket = async (req: Request, res: Response) => {
     try {
-        const { x, y, title, description, category, image } = req.body;
-        if(!x || !y || !title || !description || !category || !image){
+        const { x, y, title, description, category, image, city } = req.body;
+        if(!x || !y || !title || !description || !category || !image || !city){
             return res.status(400).json({ message: 'Something is missing from your request, check your request and please try again' });
         }
         const id = uuidv4();
@@ -45,7 +66,7 @@ export const createTicket = async (req: Request, res: Response) => {
             return res.status(500).json({ message: 'Error occured while uploading ticket image' });
         }
 
-        const ticket = { id, x, y, title, description, category };
+        const ticket = { id, x, y, title, description, category, city };
         const putOperationInput = {
             TableName: tableName,
             Item: ticket

@@ -7,9 +7,11 @@ import WeatherForecastCard from "../weatherForecastCard";
 import Player from "react-lottie-player";
 import getWeatherLottie from "@/utils/getWeatherLottie";
 import { useRef } from "react";
+import dayjs from "dayjs";
+import { useLocale } from "next-intl";
 
 export default function WeatherCard({
-  // forecast,
+  forecast,
   temperature,
   title,
   weather
@@ -20,13 +22,7 @@ export default function WeatherCard({
   weather: string;
 }) {
   const playerRef = useRef<HTMLDivElement>(null);
-
-  // const onLoad = () => {
-  //   if (playerRef.current) {
-  //     // Add the animation class to the image
-  //     playerRef.current.classList.add("animate-popInBounce");
-  //   }
-  // };
+  const locale = useLocale();
 
   return (
     <>
@@ -44,19 +40,36 @@ export default function WeatherCard({
           </div>
           <div>
             <p className="text-lg font-medium">{title}</p>
-            <p>{temperature}</p>
+            <p>{temperature}°</p>
             <p>{weather}</p>
           </div>
+          <div className="flex w-full justify-around">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {forecast?.map((day: any) => (
+              <WeatherForecastCard
+                key={day.date}
+                title={dayjs(day.date).toDate().toLocaleDateString(locale, {
+                  weekday: "short"
+                })}
+                weather={day.day.condition.text}
+                temperature={day.day.avgtemp_c}
+              />
+            ))}
+          </div>
         </div>
-        <div className="hide-scrollbar px-[16px] overflow-hidden overflow-x-scroll mb-6">
-          <div className=" flex gap-8">
-            <WeatherForecastCard weather="Sunny" temperature={20} />
-            <WeatherForecastCard weather="Partly cloudy" temperature={17} />
-            <WeatherForecastCard weather="Sunny" temperature={20} />
-            <WeatherForecastCard weather="Sunny" temperature={20} />
-            <WeatherForecastCard weather="Sunny" temperature={20} />
-            <WeatherForecastCard weather="Sunny" temperature={20} />
-            <WeatherForecastCard weather="Sunny" temperature={20} />
+        <div className="hide-scrollbar px-[16px] overflow-hidden overflow-x-scroll">
+          <div className="flex gap-8">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {(forecast?.[0] as { hour: object[] }).hour.map((hour: any) => (
+              <WeatherForecastCard
+                key={hour.time_epoch}
+                title={dayjs(hour.time).toDate().toLocaleTimeString(locale, {
+                  hour: "2-digit"
+                })}
+                weather={hour.condition.text}
+                temperature={hour.temp_c}
+              />
+            ))}
           </div>
         </div>
       </Card>

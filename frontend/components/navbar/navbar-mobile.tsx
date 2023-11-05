@@ -9,10 +9,10 @@ import {
   Bus,
   Home,
   LogOut,
-  Newspaper,
   ParkingSquare,
   Receipt,
   Tag,
+  TrafficCone,
   Trash2
 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
@@ -32,11 +32,6 @@ export function NavbarMobile() {
       label: t("sidebar.home")
     },
     {
-      href: "/news",
-      icon: <Newspaper className="h-5 w-5" />,
-      label: t("sidebar.news")
-    },
-    {
       href: "/parking",
       icon: <ParkingSquare className="h-5 w-5" />,
       label: t("sidebar.parking")
@@ -45,6 +40,11 @@ export function NavbarMobile() {
       href: "/buses",
       icon: <Bus className="h-5 w-5" />,
       label: t("sidebar.buses")
+    },
+    {
+      href: "/traffic",
+      icon: <TrafficCone className="h-5 w-5" />,
+      label: t("sidebar.traffic")
     },
     {
       href: "/waste",
@@ -57,11 +57,19 @@ export function NavbarMobile() {
       label: t("sidebar.ticketing")
     },
     {
-      href: "/bills",
+      href: "/billing",
       icon: <Receipt className="h-5 w-5" />,
       label: t("sidebar.bills")
     }
   ];
+
+  if (session.data?.user.role === "business") {
+    items.push({
+      href: "/admin-tickets",
+      icon: <Tag className="h-5 w-5" />,
+      label: t("sidebar.adminTickets")
+    });
+  }
 
   return (
     <div>

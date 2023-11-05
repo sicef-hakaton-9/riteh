@@ -37,7 +37,9 @@
     "buses": "Busevi",
     "waste": "Otpad",
     "ticketing": "Upiti",
-    "bills": "Plati račune"
+    "bills": "Plati račune",
+    "traffic": "Promet",
+    "adminTickets": "Pregled upita"
   },
   "chooseLanguage": "Izaberi jezik",
   "parking": {
@@ -45,6 +47,13 @@
     "slots": "Slobodna mjesta",
     "price": "Cijena",
     "goto": "Odvedi me"
+  },
+  "camera": {
+    "title": "Prometne kamere i radovi"
+  },
+  "tabs": {
+    "cameras": "Kamere",
+    "roadworks": "Radovi u prometu"
   },
   "waste": {
     "percentage": "Popunjenost",
@@ -66,5 +75,10 @@
       "title": "Zbog iznenadnih radova na sanaciji kolnika došlo je do velikog zastoja u prometu na Krčkom mostu, jednoj od ključnih prometnica grada Rijeke. Molimo građane za strpljenje dok traju interventni sanacijski radovi. Predviđeno je trajanje radova tijekom cijelog dana, a gužva bi mogla utjecati na večernju špicu. Vozače pozivamo da koriste alternativne pravce kako bi izbjegli gužve. Grad Rijeka se ispričava građanima zbog neugodnosti i zahvaljuje na razumijevanju.",
       "description": "Velika gužva na Krčkom mostu"
     }
+  },
+  "billing" :{
+    "title": "Naplata i usluge",
+    "autotrolej": "Mjesečna pretplata",
+    "rijeka-plus": "Monthly subscription"
   }
 }

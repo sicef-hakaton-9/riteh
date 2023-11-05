@@ -37,7 +37,8 @@
     "buses": "Buses",
     "waste": "Waste",
     "ticketing": "Submit a ticket",
-    "bills": "Pay bills"
+    "bills": "Pay bills",
+    "traffic": "Traffic"
   },
   "chooseLanguage": "Choose language",
   "parking": {
@@ -45,6 +46,21 @@
     "slots": "Free slots",
     "price": "Price",
     "goto": "Take me there"
+  },
+  "tickets": {
+    "title": "Submit a ticket",
+    "submit": {
+      "title": "Title",
+      "description": "Description",
+      "category": "Category"
+    }
+  },
+  "camera": {
+    "title": "Trafic Cameras & Roadworks"
+  },
+  "tabs": {
+    "cameras": "Cameras",
+    "roadworks": "Roadworks"
   },
   "waste": {
     "percentage": "Fill percentage",
@@ -66,5 +82,11 @@
       "description": "Due to sudden works on road rehabilitation, there has been a major traffic jam on the Krčki Most, one of the key thoroughfares of the city of Rijeka. Residents are asked for patience while the emergency repairs take place. The works are expected to last throughout the day, and the traffic jam could affect the evening rush hour. Drivers are encouraged to use alternative routes to avoid congestion. The City of Rijeka apologizes to citizens for the inconvenience and thanks for your understanding.",
       "title": "Huge traffic jam on the Krčki Most"
     }
+  },
+  "viewOnMap": "View on map",
+  "billing" :{
+    "title": "Billing and services",
+    "autotrolej": "Monthly subscription",
+    "rijeka-plus": "Monthly subscription"
   }
 }

@@ -26,6 +26,20 @@ interface Stop {
   };
 }
 
+interface Camera {
+  name: string;
+  id: string;
+}
+
+interface Roadwork {
+  id?: string;
+  location: {
+    lat?: number;
+    lang?: number;
+  };
+  image?: string;
+}
+
 interface Container {
   percentage: number;
   neighborhood: string;
@@ -35,3 +49,14 @@ interface Container {
     lat: number;
   };
 }
+
+interface CheckoutData {
+  currency: string | null;
+  total: string | null;
+  subtotal: string | null;
+  tax: number | null;
+  tax_rate: string | null;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare let Paddle: any;
