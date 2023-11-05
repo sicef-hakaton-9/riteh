@@ -46,12 +46,14 @@ module.exports = {
           400: "#242C38",
           DEFAULT: "#000"
         },
+        green: "#2BAF66",
         grey: {
           100: "#969BA5",
           200: "#55616D"
         },
         primary: "#79B4A9",
         primaryHover: "#619087",
+        red: "#FB4F52",
         secondary: "#EE7674",
         text: "#424B54",
         white: {
@@ -59,7 +61,8 @@ module.exports = {
           500: "#A4B8D5",
           800: "#D0DFFF",
           DEFAULT: "#FFF"
-        }
+        },
+        yellow: "#FDC52B"
       },
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"]
