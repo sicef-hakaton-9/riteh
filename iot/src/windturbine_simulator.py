@@ -1,21 +1,12 @@
 import boto3
 import random
-import json
 
 session = boto3.session.Session()
 dynamodb = session.resource('dynamodb')
 
-lambda_client = boto3.client('lambda')
-function_name = "EmailSender"
-
-table = dynamodb.Table('flood_sensors')
+table = dynamodb.Table('windturbines')
 
 def lambda_handler(event, context):
-    random_water_level_value = random.randint(1, 100)
-    danger = False
-    if random_water_level_value > 70:
-        danger = True
-
     response = table.scan(
         ProjectionExpression="id"
     )
@@ -30,34 +21,27 @@ def lambda_handler(event, context):
             }
         )
         random_item = random_item_response['Item']
-        print(f"Random chosen flood sensor: {random_item}")
+        print(f"Random chosen windturbine: {random_item}")
+
+        random_values = [random.randint(0, 20) for _ in range(10)]
 
         update_response = table.update_item(
             Key={
                 'id': random_id
             },
-            UpdateExpression="SET water_level = :val",
+            UpdateExpression="SET windspeed = :val",
             ExpressionAttributeValues={
-                ':val': random_water_level_value
+                ':val': random_values
             },
             ReturnValues="UPDATED_NEW"
         )
-        print(f"Updated flood sensor: {update_response}")
+        print(f"Updated windturbine: {update_response}")
 
-        # Send invoke the EmailSender lambda function
-        if danger:
-            lambda_client.invoke(
-            FunctionName=function_name,
-            InvocationType='Event',
-            Payload=json.dumps({
-                'emergency': 1
-            })
-        )
         return {
             'statusCode': 200,
             'body': {
-                'old_flood_sensor_values': random_item,
-                'new_flood_sensor_values': update_response['Attributes']
+                'old_turbine_values': random_item,
+                'new_turbine_values': update_response['Attributes']
             }
         }
     else:
