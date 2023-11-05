@@ -33,11 +33,6 @@ export default function Sidebar() {
       label: t("sidebar.home")
     },
     {
-      href: Endpoints.NEWS,
-      icon: <Newspaper className="h-5 w-5" />,
-      label: t("sidebar.news")
-    },
-    {
       href: Endpoints.PARKING,
       icon: <ParkingSquare className="h-5 w-5" />,
       label: t("sidebar.parking")
@@ -68,6 +63,14 @@ export default function Sidebar() {
       label: t("sidebar.bills")
     }
   ];
+
+  if (session.data?.user.role === "business") {
+    items.push({
+      href: Endpoints.ADMIN_TICKETS,
+      icon: <Tag className="h-5 w-5" />,
+      label: t("sidebar.adminTickets")
+    });
+  }
 
   return (
     <div
@@ -109,11 +112,21 @@ export default function Sidebar() {
             </div>
           ) : (
             <div className="m-3">
-              <Button className="mr-2" variant={"blue"}>
-                <Link href="/login">{t("auth.login")}</Link>
+              <Button
+                className="mr-2"
+                variant={"blue"}
+                onClick={() => {
+                  window.location.href = Endpoints.LOGIN;
+                }}
+              >
+                <span>{t("auth.login")}</span>
               </Button>
-              <Button>
-                <Link href="/register">{t("auth.register")}</Link>
+              <Button
+                onClick={() => {
+                  window.location.href = Endpoints.REGISTER;
+                }}
+              >
+                <span>{t("auth.register")}</span>
               </Button>
             </div>
           )}

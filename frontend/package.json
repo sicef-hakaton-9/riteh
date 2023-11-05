@@ -30,6 +30,7 @@
     "bufferutil": "^4.0.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-css-modules": "^2.11.4",
     "eslint-plugin-no-inline-styles": "^1.0.5",

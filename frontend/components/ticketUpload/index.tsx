@@ -56,6 +56,7 @@ export default function TicketUpload() {
     submitTicket(
       {
         ...values,
+        city: "Rijeka",
         image: fileBase64?.split(",")[1],
         x: (
           coords as {
@@ -90,10 +91,10 @@ export default function TicketUpload() {
   const t = useTranslations();
 
   return (
-    <Card className="w-[500px] h-[600px]">
+    <Card className="w-[500px] h-[600px] m-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 p-4">
-          <h1 className="heading3">--ticket upload</h1>
+          <h1 className="heading3">{t("tickets.title")}</h1>
           <FormField
             control={form.control}
             name="image"
@@ -111,9 +112,13 @@ export default function TicketUpload() {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>--title</FormLabel>
+                <FormLabel>{t("tickets.submit.title")}</FormLabel>
                 <FormControl>
-                  <Input type="text" placeholder="--Ticket Title" {...field} />
+                  <Input
+                    type="text"
+                    placeholder={t("tickets.submit.title")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -124,9 +129,13 @@ export default function TicketUpload() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>--description</FormLabel>
+                <FormLabel>{t("tickets.submit.description")}</FormLabel>
                 <FormControl>
-                  <Input type="text" placeholder="--Ticket Description" {...field} />
+                  <Input
+                    type="text"
+                    placeholder={t("tickets.submit.description")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -137,16 +146,20 @@ export default function TicketUpload() {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>--category</FormLabel>
+                <FormLabel>{t("tickets.submit.category")}</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a verified email to display" />
+                      <SelectValue placeholder={t("tickets.submit.category")} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="trash">--trash</SelectItem>
-                    <SelectItem value="traffic">--traffic</SelectItem>
+                    <SelectItem value="trash">
+                      {t("tickets.submit.category")}
+                    </SelectItem>
+                    <SelectItem value="traffic">
+                      {t("tickets.submit.category")}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </FormItem>

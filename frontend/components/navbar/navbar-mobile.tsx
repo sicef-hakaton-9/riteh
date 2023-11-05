@@ -9,7 +9,6 @@ import {
   Bus,
   Home,
   LogOut,
-  Newspaper,
   ParkingSquare,
   Receipt,
   Tag,
@@ -31,11 +30,6 @@ export function NavbarMobile() {
       href: "/",
       icon: <Home className="h-5 w-5" />,
       label: t("sidebar.home")
-    },
-    {
-      href: "/news",
-      icon: <Newspaper className="h-5 w-5" />,
-      label: t("sidebar.news")
     },
     {
       href: "/parking",
@@ -68,6 +62,14 @@ export function NavbarMobile() {
       label: t("sidebar.bills")
     }
   ];
+
+  if (session.data?.user.role === "business") {
+    items.push({
+      href: "/admin-tickets",
+      icon: <Tag className="h-5 w-5" />,
+      label: t("sidebar.adminTickets")
+    });
+  }
 
   return (
     <div>
