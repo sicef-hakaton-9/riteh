@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import {
   Bus,
   Home,
-  Newspaper,
   ParkingSquare,
   Receipt,
   // Receipt,
