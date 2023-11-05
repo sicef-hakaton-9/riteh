@@ -48,6 +48,14 @@
     "price": "Cijena",
     "goto": "Odvedi me"
   },
+  "tickets": {
+    "title": "Postavi upit",
+    "submit": {
+      "title": "Naslov",
+      "description": "Opis",
+      "category": "Kategorija"
+    }
+  },
   "camera": {
     "title": "Prometne kamere i radovi"
   },
@@ -64,19 +72,20 @@
     "recent": "Najnovije vijesti",
     "viewMore": "Vidi sve",
     "item1": {
-      "title": "Grad Rijeka s ponosom najavljuje koncert Simfonijskog orkestra koji će se održati u prestižnoj koncertnoj dvorani 'Zajc'. Ljubitelji klasične glazbe uživat će u izvedbama slavnih skladatelja poput Beethovena, Mozarta i Chopina. Dirigent večer će biti maestro Ivan Repušić, poznat po svojoj strasti i energiji kojom oživljava svaku notu. Posjetitelje očekuje večer ispunjena harmonijom i ljepotom klasične glazbe koja će odjekivati riječkim zidinama.",
-      "description": "Koncert Riječkog simfonijskog orkestra"
+      "description": "Grad Rijeka s ponosom najavljuje koncert Simfonijskog orkestra koji će se održati u prestižnoj koncertnoj dvorani 'Zajc'. Ljubitelji klasične glazbe uživat će u izvedbama slavnih skladatelja poput Beethovena, Mozarta i Chopina. Dirigent večer će biti maestro Ivan Repušić, poznat po svojoj strasti i energiji kojom oživljava svaku notu. Posjetitelje očekuje večer ispunjena harmonijom i ljepotom klasične glazbe koja će odjekivati riječkim zidinama.",
+      "title": "Koncert Riječkog simfonijskog orkestra"
     },
     "item2": {
-      "title": "Ljubitelji kulinarstva ovog vikenda imat će priliku upoznati tajne riječke kuhinje na nizu radionica koje će voditi chef Dario. Odlična prilika za sve gurmane da zavire u bogatstvo domaćih okusa i nauče pripremati autentičnu riječku delicije poput šurlica i brodeta. Radionice će se održavati u staroj gradskoj jezgri, a sudionicima će osim kulinarskog ponuditi i kulturno iskustvo. Sudionici će kuhati, degustirati i što je najvažnije uživati u druženju.",
-      "description": "Radionice tradicionalne riječke kuhinje"
+      "description": "Ljubitelji kulinarstva ovog vikenda imat će priliku upoznati tajne riječke kuhinje na nizu radionica koje će voditi chef Dario. Odlična prilika za sve gurmane da zavire u bogatstvo domaćih okusa i nauče pripremati autentičnu riječku delicije poput šurlica i brodeta. Radionice će se održavati u staroj gradskoj jezgri, a sudionicima će osim kulinarskog ponuditi i kulturno iskustvo. Sudionici će kuhati, degustirati i što je najvažnije uživati u druženju.",
+      "title": "Radionice tradicionalne riječke kuhinje"
     },
     "item3": {
-      "title": "Zbog iznenadnih radova na sanaciji kolnika došlo je do velikog zastoja u prometu na Krčkom mostu, jednoj od ključnih prometnica grada Rijeke. Molimo građane za strpljenje dok traju interventni sanacijski radovi. Predviđeno je trajanje radova tijekom cijelog dana, a gužva bi mogla utjecati na večernju špicu. Vozače pozivamo da koriste alternativne pravce kako bi izbjegli gužve. Grad Rijeka se ispričava građanima zbog neugodnosti i zahvaljuje na razumijevanju.",
-      "description": "Velika gužva na Krčkom mostu"
+      "description": "Zbog iznenadnih radova na sanaciji kolnika došlo je do velikog zastoja u prometu na Krčkom mostu, jednoj od ključnih prometnica grada Rijeke. Molimo građane za strpljenje dok traju interventni sanacijski radovi. Predviđeno je trajanje radova tijekom cijelog dana, a gužva bi mogla utjecati na večernju špicu. Vozače pozivamo da koriste alternativne pravce kako bi izbjegli gužve. Grad Rijeka se ispričava građanima zbog neugodnosti i zahvaljuje na razumijevanju.",
+      "title": "Velika gužva na Krčkom mostu"
     }
   },
-  "billing" :{
+  "viewOnMap": "View on map",
+  "billing": {
     "title": "Naplata i usluge",
     "autotrolej": "Mjesečna pretplata",
     "rijeka-plus": "Monthly subscription"

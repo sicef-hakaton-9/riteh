@@ -2,6 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
 import Endpoints from "@/constants/enums/Endpoints";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -24,7 +31,20 @@ export default function PageClient({
   const router = useRouter();
   return (
     <>
-      <div className="p-5 w-full flex gap-5">
+      <Select
+        onValueChange={(value) => {
+          router.push(Endpoints.ADMIN_TICKETS(value));
+        }}
+      >
+        <SelectTrigger className="w-[180px] m-5">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="traffic">Traffic</SelectItem>
+          <SelectItem value="trash">Trash</SelectItem>
+        </SelectContent>
+      </Select>
+      <div className="p-5 w-full flex gap-5 flex-wrap justify-center md:justify-start">
         {initialData.map((ticket) => (
           <>
             <Card className="w-[300px] h-auto">
@@ -38,7 +58,7 @@ export default function PageClient({
               </div>
               <div className="flex p-3">
                 <div>
-                  <p>{ticket.title}</p>
+                  <p className="line-clamp-2">{ticket.title}</p>
                   <p className="text-gray-500 line-clamp-2">{ticket.description}</p>
                 </div>
               </div>

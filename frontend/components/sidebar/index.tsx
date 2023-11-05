@@ -7,7 +7,6 @@ import {
   Home,
   ParkingSquare,
   Receipt,
-  // Receipt,
   Tag,
   TrafficCone,
   Trash2
@@ -20,6 +19,7 @@ import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 import Endpoints from "@/constants/enums/Endpoints";
 import { Separator } from "../ui/separator";
+import Image from "next/image";
 
 export default function Sidebar() {
   const t = useTranslations();
@@ -65,7 +65,7 @@ export default function Sidebar() {
 
   if (session.data?.user.role === "business") {
     items.push({
-      href: Endpoints.ADMIN_TICKETS,
+      href: Endpoints.ADMIN_TICKETS(),
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.adminTickets")
     });
@@ -79,7 +79,7 @@ export default function Sidebar() {
     >
       <div className="flex h-full flex-col overflow-y-auto border-r border-slate-200 bg-white px-3 py-4 dark:border-slate-700 dark:bg-slate-900">
         <div className="mb-10 flex items-center rounded-lg px-3 py-2 text-slate-900 dark:text-white">
-          logo
+          <Image src="/images/nextCity.png" width={70} height={70} alt="logo" />
         </div>
         <ul className="space-y-2 text-sm font-medium">
           {items.map((item, index) => (

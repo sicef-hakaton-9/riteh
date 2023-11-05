@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <>
       <div className="justify-between items-center px-6 flex sm:hidden mt-4 mb-4">
-        <Image src="/images/logo.png" width={70} height={70} alt="logo" />
+        <Image src="/images/nextCity.png" width={70} height={70} alt="logo" />
         <NavbarMobile />
       </div>
     </>

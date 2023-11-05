@@ -85,7 +85,7 @@
     }
   },
   "viewOnMap": "View on map",
-  "billing" :{
+  "billing": {
     "title": "Billing and services",
     "autotrolej": "Monthly subscription",
     "rijeka-plus": "Monthly subscription"
