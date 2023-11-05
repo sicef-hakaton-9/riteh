@@ -65,7 +65,7 @@ export default function Sidebar() {
 
   if (session.data?.user.role === "business") {
     items.push({
-      href: Endpoints.ADMIN_TICKETS,
+      href: Endpoints.ADMIN_TICKETS(),
       icon: <Tag className="h-5 w-5" />,
       label: t("sidebar.adminTickets")
     });

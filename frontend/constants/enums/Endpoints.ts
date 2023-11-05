@@ -1,5 +1,6 @@
 const Endpoints = {
-  ADMIN_TICKETS: "/admin-tickets",
+  ADMIN_TICKETS: (query?: string) =>
+    `/admin-tickets${query ? `?category=${query}` : ""}`,
   BILLING: "/billing",
   BILLS: "/bills",
   BUSES: "/buses",
